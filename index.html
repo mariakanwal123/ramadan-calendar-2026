@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramadan 1447 — Maria Kanwal</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:#7a6230;--bg:#04040a;--surface:#10101e;--surface2:#161628;--green:#2ecc71;--red:#e74c3c;--purple:#9b59b6;--text:#e8e0cc;--text-dim:#8a7f6a;--border:rgba(201,168,76,0.2);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(201,168,76,0.04),transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(100,80,200,0.04),transparent 50%);pointer-events:none;z-index:0;}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite var(--delay,0s);}
+@keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.7;}}
+.tab-bar{position:sticky;top:0;z-index:100;background:rgba(4,4,10,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);display:flex;overflow-x:auto;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:13px 15px;background:none;border:none;color:var(--text-dim);font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.panel{display:none;padding:18px 14px;max-width:860px;margin:0 auto;position:relative;z-index:1;}
+.panel.active{display:block;}
+.section-title{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:var(--gold);text-align:center;margin-bottom:5px;letter-spacing:2px;}
+.section-sub{text-align:center;color:var(--text-dim);font-size:11px;letter-spacing:1px;margin-bottom:18px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:13px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.clock-wrap{text-align:center;padding:22px 12px;}
+.clock-city{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;}
+.clock-time{font-family:'Cinzel',serif;font-size:48px;font-weight:900;color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,0.3);letter-spacing:3px;line-height:1;}
+.clock-date{font-size:11px;color:var(--text-dim);margin-top:7px;letter-spacing:1px;}
+.clock-islamic{font-family:'Amiri',serif;font-size:16px;color:var(--gold-light);margin-top:5px;}
+.fast-times{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px;}
+.fast-box{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:15px;text-align:center;position:relative;overflow:hidden;}
+.fast-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.fast-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;}
+.fast-time{font-family:'Cinzel',serif;font-size:24px;font-weight:900;color:var(--gold);}
+.fast-arabic{font-family:'Amiri',serif;font-size:12px;color:var(--gold-dim);margin-top:2px;}
+.countdown-box{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.01));border:1px solid var(--border);border-radius:13px;padding:16px;text-align:center;margin-bottom:13px;}
+.countdown-label{font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-bottom:5px;text-transform:uppercase;}
+.countdown-val{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);font-weight:900;}
+.countdown-sub{font-size:10px;color:var(--text-dim);margin-top:3px;}
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.cal-nav button{background:var(--surface2);border:1px solid var(--border);color:var(--gold);padding:5px 12px;border-radius:7px;cursor:pointer;font-size:15px;transition:.2s;}
+.cal-month-label{font-family:'Cinzel',serif;color:var(--gold);font-size:14px;}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cal-hdr{text-align:center;font-size:9px;color:var(--gold-dim);padding:4px 1px;font-weight:700;letter-spacing:1px;}
+.cal-day{background:var(--surface2);border:1px solid transparent;border-radius:7px;padding:4px 2px;text-align:center;cursor:pointer;transition:all .2s;min-height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.cal-day.ramadan{background:rgba(201,168,76,0.04);}
+.cal-day.laylatul{border-color:rgba(155,89,182,0.5);background:rgba(155,89,182,0.1);}
+.cal-day.today{border-color:var(--gold) !important;background:rgba(201,168,76,0.14) !important;box-shadow:0 0 14px rgba(201,168,76,0.2);}
+.cal-day-num{font-size:12px;font-weight:600;color:var(--text);}
+.cal-day.today .cal-day-num{color:var(--gold);}
+.cal-day.laylatul .cal-day-num{color:#c39bd3;}
+.cal-hijri{font-family:'Amiri',serif;font-size:8px;color:var(--text-dim);margin-top:1px;}
+.cal-badge{font-size:7px;font-weight:700;letter-spacing:.3px;}
+.cal-day.empty{background:transparent;border:none;cursor:default;}
+.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px;margin-top:4px;}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text-dim);}
+.legend-dot{width:9px;height:9px;border-radius:2px;}
+.prayer-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-radius:9px;background:var(--surface2);margin-bottom:6px;border:1px solid transparent;transition:.2s;}
+.prayer-row.sehri-row{border-color:rgba(100,200,255,0.25);background:rgba(100,200,255,0.03);}
+.prayer-row.iftar-row{border-color:rgba(255,160,50,0.25);background:rgba(255,160,50,0.04);}
+.prayer-row.current-prayer{border-color:var(--gold) !important;background:rgba(201,168,76,0.07) !important;}
+.prayer-name{font-family:'Cinzel',serif;font-size:12px;color:var(--text);}
+.prayer-arabic{font-family:'Amiri',serif;font-size:10px;color:var(--text-dim);}
+.prayer-time-val{font-size:15px;color:var(--gold);font-weight:700;letter-spacing:1px;}
+.badge{display:inline-block;padding:1px 5px;border-radius:20px;font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;vertical-align:middle;margin-left:3px;}
+.badge-now{background:rgba(46,204,113,0.15);color:var(--green);border:1px solid rgba(46,204,113,0.3);}
+.badge-sehri{background:rgba(100,200,255,0.1);color:#6cc8ff;border:1px solid rgba(100,200,255,0.2);}
+.badge-iftar{background:rgba(255,160,50,0.1);color:#ffa032;border:1px solid rgba(255,160,50,0.2);}
+.city-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;justify-content:center;}
+.city-btn{padding:6px 12px;border-radius:16px;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:.2s;font-family:'Raleway',sans-serif;}
+.city-btn.active{background:rgba(201,168,76,0.12);border-color:var(--gold);color:var(--gold);}
+.region-info{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:12px;}
+.region-title{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);margin-bottom:2px;}
+.region-tz{font-size:10px;color:var(--text-dim);}
+.region-live-time{font-family:'Cinzel',serif;font-size:24px;color:var(--gold-light);}
+.google-link{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:9px;background:rgba(66,133,244,0.1);border:1px solid rgba(66,133,244,0.3);color:#4285f4;font-size:10px;font-weight:600;text-decoration:none;transition:.2s;letter-spacing:.5px;}
+.google-link:hover{background:rgba(66,133,244,0.2);}
+.google-link-wrap{text-align:center;margin:10px 0;}
+.quote-card{border-left:3px solid var(--gold);background:var(--surface);padding:13px 16px;border-radius:0 10px 10px 0;margin-bottom:9px;}
+.quote-text{font-family:'Amiri',serif;font-size:14px;color:var(--text);line-height:1.7;}
+.quote-src{font-size:9px;color:var(--gold-dim);margin-top:4px;letter-spacing:1px;}
+.dua-card{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--border);border-radius:13px;padding:18px;margin-bottom:13px;text-align:center;}
+.dua-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:9px;}
+.dua-arabic{font-family:'Amiri',serif;font-size:21px;color:var(--gold-light);line-height:1.8;margin-bottom:9px;direction:rtl;}
+.dua-trans{font-size:11px;color:var(--text-dim);font-style:italic;line-height:1.6;}
+.layl-card{background:linear-gradient(135deg,rgba(155,89,182,0.12),rgba(155,89,182,0.03));border:1px solid rgba(155,89,182,0.3);border-radius:13px;padding:15px;margin-bottom:10px;text-align:center;}
+.layl-title{font-family:'Cinzel',serif;font-size:14px;color:#c39bd3;margin-bottom:5px;}
+.layl-sub{font-size:11px;color:var(--text-dim);line-height:1.6;}
+.layl-nights{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:10px;}
+.layl-pill{padding:5px 11px;border-radius:18px;background:rgba(155,89,182,0.13);border:1px solid rgba(155,89,182,0.35);color:#c39bd3;font-size:10px;font-weight:600;font-family:'Cinzel',serif;text-align:center;}
+.motiv-card{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid rgba(201,168,76,0.1);border-radius:13px;padding:16px;margin-bottom:9px;border-left:3px solid var(--gold);}
+.motiv-icon{font-size:20px;margin-bottom:5px;}
+.motiv-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);margin-bottom:4px;}
+.motiv-text{font-size:11px;color:var(--text-dim);line-height:1.7;}
+.stats-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px;}
+.stat-box{flex:1;min-width:65px;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:11px 7px;text-align:center;}
+.stat-num{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);font-weight:700;}
+.stat-label{font-size:8px;color:var(--text-dim);margin-top:2px;letter-spacing:1px;text-transform:uppercase;}
+.progress-bar-wrap{background:var(--surface2);border-radius:100px;height:6px;overflow:hidden;margin:6px 0;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:100px;transition:width .5s;}
+.tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:7px;}
+.tracker-day{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:9px 7px;text-align:center;}
+.tracker-day.today-day{border-color:var(--gold);}
+.tracker-day-label{font-size:9px;color:var(--text-dim);margin-bottom:6px;font-weight:600;}
+.prayer-marks{display:flex;flex-direction:column;gap:3px;}
+.prayer-mark{display:flex;justify-content:space-between;align-items:center;}
+.prayer-mark-name{font-size:9px;color:var(--text-dim);}
+.mark-btn{width:19px;height:19px;border-radius:50%;border:1px solid var(--border);background:none;cursor:pointer;font-size:9px;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.mark-btn.done{background:var(--green);border-color:var(--green);color:#fff;}
+.mark-btn.missed{background:var(--red);border-color:var(--red);color:#fff;}
+.btn{padding:10px 18px;border-radius:9px;border:1px solid var(--gold);background:rgba(201,168,76,0.08);color:var(--gold);font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.btn:hover{background:rgba(201,168,76,0.18);}
+.btn.primary{background:var(--gold);color:var(--bg);}
+.btn.primary:hover{background:var(--gold-light);}
+.btn-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;}
+.cta{text-align:center;padding:26px 14px;border-top:1px solid var(--border);margin-top:22px;}
+.cta-name{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);margin-bottom:4px;}
+.cta-mail{color:var(--text-dim);font-size:11px;}
+.cta-mail a{color:var(--gold-dim);text-decoration:none;}
+.cta-mail a:hover{color:var(--gold);}
+.city-time-row{display:flex;justify-content:space-between;align-items:center;padding:8px 13px;background:var(--surface2);border-radius:8px;margin-bottom:5px;border:1px solid var(--border);}
+.city-label{font-size:10px;color:var(--text-dim);font-weight:600;}
+.city-clock{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);}
+.moon-anim{text-align:center;font-size:48px;animation:moonFloat 4s ease-in-out infinite;margin-bottom:7px;}
+@keyframes moonFloat{0%,100%{transform:translateY(0) rotate(-5deg);}50%{transform:translateY(-8px) rotate(5deg);}}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
+@media(min-width:580px){.clock-time{font-size:60px;}.fast-time{font-size:28px;}.tracker-grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<nav class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('calendar',this)">🌙 Calendar</button>
+  <button class="tab-btn" onclick="showTab('rawalpindi',this)">📍 Rawalpindi</button>
+  <button class="tab-btn" onclick="showTab('pakistan',this)">🇵🇰 Pakistan</button>
+  <button class="tab-btn" onclick="showTab('gulf',this)">🌍 Gulf</button>
+  <button class="tab-btn" onclick="showTab('world',this)">🌐 World</button>
+  <button class="tab-btn" onclick="showTab('tracker',this)">📿 Tracker</button>
+</nav>
+
+<!-- CALENDAR -->
+<div id="tab-calendar" class="panel active">
+  <div class="moon-anim">🌙</div>
+  <div class="section-title">Ramadan 1447 AH</div>
+  <div class="section-sub">19 February — 19 March 2026 · 1st Ramadan starts TODAY</div>
+  <div class="card">
+    <div class="clock-wrap">
+      <div class="clock-city">🕌 Rawalpindi / Islamabad — Pakistan Standard Time</div>
+      <div class="clock-time" id="mainClock">--:--:--</div>
+      <div class="clock-date" id="mainDate"></div>
+      <div class="clock-islamic" id="islamicDate"></div>
+    </div>
+  </div>
+  <div class="fast-times">
+    <div class="fast-box"><div class="fast-label">🌅 Sehri Ends — Rawalpindi</div><div class="fast-time">05:24</div><div class="fast-arabic">سحری ختم</div></div>
+    <div class="fast-box"><div class="fast-label">🌇 Iftar — Rawalpindi</div><div class="fast-time">05:57 PM</div><div class="fast-arabic">افطار</div></div>
+  </div>
+  <div class="countdown-box">
+    <div class="countdown-label">⏳ Time Until Next Prayer</div>
+    <div class="countdown-val" id="nextCountdown">--:--:--</div>
+    <div class="countdown-sub" id="nextLabel">Calculating...</div>
+  </div>
+  <div class="card">
+    <div class="cal-nav">
+      <button onclick="calPrev()">‹</button>
+      <div class="cal-month-label" id="calMonthLabel"></div>
+      <button onclick="calNext()">›</button>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(201,168,76,0.5);border:1px solid var(--gold)"></div>Today</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(201,168,76,0.07)"></div>Ramadan Day</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(155,89,182,0.3);border:1px solid rgba(155,89,182,0.5)"></div>Laylatul Qadr Night</div>
+    </div>
+    <div class="calendar-grid" id="calHeaders"></div>
+    <div class="calendar-grid" id="calGrid" style="margin-top:3px;"></div>
+  </div>
+  <div class="layl-card">
+    <div class="layl-title">✨ Laylatul Qadr — Night of Power</div>
+    <div class="layl-sub">Seek it in the odd nights of the last 10 days. Better than 1,000 months (83 years) of worship. Marked ✨ on the calendar above.</div>
+    <div class="layl-nights">
+      <div class="layl-pill">21st Ramadan<br><small>Mar 11 night</small></div>
+      <div class="layl-pill">23rd Ramadan<br><small>Mar 13 night</small></div>
+      <div class="layl-pill">25th Ramadan<br><small>Mar 15 night</small></div>
+      <div class="layl-pill">27th Ramadan<br><small>Mar 17 night</small></div>
+      <div class="layl-pill">29th Ramadan<br><small>Mar 19 night</small></div>
+    </div>
+  </div>
+  <div class="dua-card">
+    <div class="dua-type">🌅 Dua of Sehri — Niyyah for Fasting</div>
+    <div class="dua-arabic">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</div>
+    <div class="dua-trans">"I intend to keep the fast for tomorrow in the month of Ramadan."</div>
+  </div>
+  <div class="dua-card">
+    <div class="dua-type">🌇 Dua of Iftari — Breaking the Fast</div>
+    <div class="dua-arabic">اللَّهُمَّ اِنِّی لَکَ صُمْتُ وَبِکَ آمَنْتُ وَعَلَيْکَ تَوَکَّلْتُ وَعَلَی رِزْقِکَ اَفْطَرْتُ</div>
+    <div class="dua-trans">"O Allah! I fasted for You and I believe in You and I put my trust in You and I break my fast with Your sustenance."</div>
+  </div>
+  <div class="quote-card"><div class="quote-text">شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ<br>"The month of Ramadan in which the Quran was revealed as guidance for mankind."</div><div class="quote-src">— Quran 2:185</div></div>
+  <div class="quote-card"><div class="quote-text">"When Ramadan enters, the gates of Paradise are opened, the gates of Hellfire are closed, and the devils are chained."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari & Muslim</div></div>
+  <div class="quote-card"><div class="quote-text">لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ — "The Night of Decree is better than a thousand months."</div><div class="quote-src">— Quran 97:3</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail">Ramadan 2026 Guide · <a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<!-- RAWALPINDI -->
+<div id="tab-rawalpindi" class="panel">
+  <div class="section-title">📍 Rawalpindi</div>
+  <div class="section-sub">Ramadan 1447 · 1st Roza: 19 February 2026</div>
+  <div class="region-info">
+    <div class="region-title">📍 Rawalpindi / Islamabad</div>
+    <div class="region-tz">Pakistan Standard Time — UTC+5</div>
+    <div class="region-live-time" id="rwpClock">--:--:--</div>
+  </div>
+  <div class="fast-times">
+    <div class="fast-box"><div class="fast-label">🌅 Sehri Ends (Day 1)</div><div class="fast-time">05:24</div><div class="fast-arabic">سحری ختم</div></div>
+    <div class="fast-box"><div class="fast-label">🌇 Iftar (Day 1)</div><div class="fast-time">05:57 PM</div><div class="fast-arabic">افطار</div></div>
+  </div>
+  <div class="google-link-wrap"><a class="google-link" href="https://www.google.com/search?q=prayer+times+rawalpindi+today" target="_blank">🔍 Live Prayer Times — Rawalpindi on Google</a></div>
+  <div class="card">
+    <div class="section-title" style="font-size:14px;margin-bottom:12px;">🕌 Prayer Timings — Rawalpindi</div>
+    <div id="rwpPrayers"></div>
+  </div>
+  <div class="layl-card">
+    <div class="layl-title">✨ Laylatul Qadr Nights — Rawalpindi</div>
+    <div class="layl-sub">Stay awake, pray, make dua. These 5 nights could change your entire year.</div>
+    <div class="layl-nights">
+      <div class="layl-pill">21st · Mar 11</div><div class="layl-pill">23rd · Mar 13</div><div class="layl-pill">25th · Mar 15</div><div class="layl-pill">27th · Mar 17</div><div class="layl-pill">29th · Mar 19</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:11px;">🌟 Ramadan in Rawalpindi</div>
+    <div class="motiv-card"><div class="motiv-icon">🕌</div><div class="motiv-title">Tarawih at Faisal Mosque</div><div class="motiv-text">Faisal Mosque holds massive Tarawih congregations all month. Thousands pray under the open sky — experience the spiritual energy of the Ummah at least once this Ramadan.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">📖</div><div class="motiv-title">Complete the Quran</div><div class="motiv-text">4 pages after each of the 5 daily prayers = complete Khatm in 30 days. Start today. By Eid ul Fitr you will have completed the Book of Allah once this blessed month.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">🍛</div><div class="motiv-title">Saddar Bazaar Iftar Culture</div><div class="motiv-text">Rawalpindi's streets come alive at Maghrib. Samosas, pakoras, channa chaat, dahi bhallay — the community spirit of Iftar in Pindi is something else entirely. Embrace it.</div></div>
+  </div>
+  <div class="quote-card"><div class="quote-text">"Take suhoor, for in suhoor there is blessing."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari & Muslim</div></div>
+  <div class="quote-card"><div class="quote-text">"Whoever fasts Ramadan out of faith and in the hope of reward, all his previous sins will be forgiven."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail"><a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<!-- PAKISTAN -->
+<div id="tab-pakistan" class="panel">
+  <div class="section-title">🇵🇰 Pakistan</div>
+  <div class="section-sub">All Major Cities · Ramadan 1447</div>
+  <div class="city-tabs" id="pkTabs">
+    <button class="city-btn active" onclick="showCity('pk','karachi',this)">🌊 Karachi</button>
+    <button class="city-btn" onclick="showCity('pk','lahore',this)">🌹 Lahore</button>
+    <button class="city-btn" onclick="showCity('pk','peshawar',this)">🏔️ Peshawar</button>
+    <button class="city-btn" onclick="showCity('pk','quetta',this)">🏜️ Quetta</button>
+    <button class="city-btn" onclick="showCity('pk','multan',this)">☀️ Multan</button>
+  </div>
+  <div class="region-info">
+    <div class="region-title" id="pkCityName">🌊 Karachi</div>
+    <div class="region-tz">Pakistan Standard Time — UTC+5</div>
+    <div class="region-live-time" id="pkClock">--:--:--</div>
+  </div>
+  <div id="pkFastTimes" class="fast-times"></div>
+  <div class="google-link-wrap" id="pkGoogleLink"></div>
+  <div class="card"><div id="pkPrayers"></div></div>
+  <div class="layl-card">
+    <div class="layl-title">✨ Laylatul Qadr — Last 10 Nights</div>
+    <div class="layl-sub">The Prophet ﷺ would spend entire nights in worship during these 10 days. Search for this night especially on odd nights.</div>
+    <div class="layl-nights"><div class="layl-pill">21st · Mar 11</div><div class="layl-pill">23rd · Mar 13</div><div class="layl-pill">25th · Mar 15</div><div class="layl-pill">27th · Mar 17</div><div class="layl-pill">29th · Mar 19</div></div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:10px;">✨ Ramadan Activities</div>
+    <div class="motiv-card"><div class="motiv-icon">🤲</div><div class="motiv-title">Tahajjud Before Sehri</div><div class="motiv-text">Wake 30 minutes early. Pray 2–8 raka'at of Tahajjud. Make heartfelt dua. Allah descends to the lowest heaven in the last third of the night saying: "Who is calling upon Me that I may answer him?"</div></div>
+    <div class="motiv-card"><div class="motiv-icon">💝</div><div class="motiv-title">Feed the Fasting</div><div class="motiv-text">"Whoever feeds a fasting person will have a reward equal to his." Even a single date and a glass of water earns this full reward. Set up a small Iftar dastarkhwan for your neighbours.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">📵</div><div class="motiv-title">Digital Detox Hours</div><div class="motiv-text">Set 1 hour after Fajr and 1 hour after Maghrib as completely screen-free. Use this time for Quran, dhikr, or quiet reflection. The phone can wait. These moments are irreplaceable.</div></div>
+  </div>
+  <div class="quote-card"><div class="quote-text">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ<br>"O believers, fasting has been prescribed for you as it was prescribed for those before you."</div><div class="quote-src">— Quran 2:183</div></div>
+  <div class="quote-card"><div class="quote-text">"The dua of a fasting person at the time of breaking fast is not rejected."</div><div class="quote-src">— Prophet Muhammad ﷺ · Ibn Majah</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail"><a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<!-- GULF -->
+<div id="tab-gulf" class="panel">
+  <div class="section-title">🌍 Gulf & Middle East</div>
+  <div class="section-sub">UAE · Saudi Arabia · Turkey · Egypt</div>
+  <div class="city-tabs" id="gulfTabs">
+    <button class="city-btn active" onclick="showCity('gulf','dubai',this)">🇦🇪 Dubai</button>
+    <button class="city-btn" onclick="showCity('gulf','abudhabi',this)">🇦🇪 Abu Dhabi</button>
+    <button class="city-btn" onclick="showCity('gulf','riyadh',this)">🇸🇦 Riyadh</button>
+    <button class="city-btn" onclick="showCity('gulf','mecca',this)">🕋 Mecca</button>
+    <button class="city-btn" onclick="showCity('gulf','istanbul',this)">🇹🇷 Istanbul</button>
+    <button class="city-btn" onclick="showCity('gulf','cairo',this)">🇪🇬 Cairo</button>
+  </div>
+  <div class="region-info">
+    <div class="region-title" id="gulfCityName">🇦🇪 Dubai</div>
+    <div class="region-tz" id="gulfCityTZ">Gulf Standard Time — UTC+4</div>
+    <div class="region-live-time" id="gulfClock">--:--:--</div>
+  </div>
+  <div id="gulfFastTimes" class="fast-times"></div>
+  <div class="google-link-wrap" id="gulfGoogleLink"></div>
+  <div class="card"><div id="gulfPrayers"></div></div>
+  <div class="layl-card">
+    <div class="layl-title">✨ Laylatul Qadr in the Haramain</div>
+    <div class="layl-sub">One prayer in Masjid al-Haram = 100,000 prayers. If you are in the Gulf, consider Umrah in the last 10 nights — the reward is beyond calculation. Umrah in Ramadan = reward of Hajj.</div>
+    <div class="layl-nights"><div class="layl-pill">21st · Mar 11</div><div class="layl-pill">23rd · Mar 13</div><div class="layl-pill">25th · Mar 15</div><div class="layl-pill">27th · Mar 17</div><div class="layl-pill">29th · Mar 19</div></div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:10px;">🕌 Ramadan in the Gulf</div>
+    <div class="motiv-card"><div class="motiv-icon">🕋</div><div class="motiv-title">Umrah During Last 10 Nights</div><div class="motiv-text">Umrah in Ramadan equals the reward of Hajj according to the hadith. If you are in the Gulf, this blessed proximity to the Haramain is a gift from Allah. Do not let it pass unused.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">🌃</div><div class="motiv-title">Dubai's Ramadan Majlis</div><div class="motiv-text">The UAE transforms completely at night. Community Iftars, charity tents, and majlis gatherings fill the city with light and brotherhood. Volunteer at a free Iftar — feeding thousands earns enormous reward.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">🤲</div><div class="motiv-title">Dua of Laylatul Qadr</div><div class="motiv-text">اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي<br>"O Allah, You are the Pardoner, the Generous, You love to pardon, so pardon me." Repeat this in every odd night of the last 10 days.</div></div>
+  </div>
+  <div class="quote-card"><div class="quote-text">"There is a gate in Paradise called Ar-Raiyan. Those who observe fasts will enter through it on the Day of Resurrection and none except them."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail"><a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<!-- WORLD -->
+<div id="tab-world" class="panel">
+  <div class="section-title">🌐 World Prayer Times</div>
+  <div class="section-sub">USA · UK · Canada · Malaysia · Indonesia</div>
+  <div class="city-tabs" id="worldTabs">
+    <button class="city-btn active" onclick="showCity('world','newyork',this)">🇺🇸 New York</button>
+    <button class="city-btn" onclick="showCity('world','losangeles',this)">🇺🇸 Los Angeles</button>
+    <button class="city-btn" onclick="showCity('world','london',this)">🇬🇧 London</button>
+    <button class="city-btn" onclick="showCity('world','toronto',this)">🇨🇦 Toronto</button>
+    <button class="city-btn" onclick="showCity('world','kualalumpur',this)">🇲🇾 KL</button>
+    <button class="city-btn" onclick="showCity('world','jakarta',this)">🇮🇩 Jakarta</button>
+  </div>
+  <div class="region-info">
+    <div class="region-title" id="worldCityName">🇺🇸 New York</div>
+    <div class="region-tz" id="worldCityTZ">Eastern Time — UTC-5</div>
+    <div class="region-live-time" id="worldClock">--:--:--</div>
+  </div>
+  <div id="worldFastTimes" class="fast-times"></div>
+  <div class="google-link-wrap" id="worldGoogleLink"></div>
+  <div class="card"><div id="worldPrayers"></div></div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:10px;">🌍 Live World Times</div>
+    <div id="worldClocks"></div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:10px;">💫 1.9 Billion Fasting Together</div>
+    <div class="motiv-card"><div class="motiv-icon">🌍</div><div class="motiv-title">The Global Ummah</div><div class="motiv-text">Right now, Muslims in 195 countries fast alongside you. Every hunger pang, every Fajr before sunrise, every act of charity — felt by nearly 2 billion hearts. You are never alone in this.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">🏙️</div><div class="motiv-title">Fasting as a Minority</div><div class="motiv-text">Fasting in a non-Muslim country carries extra reward. You consciously choose your deen in an environment that doesn't facilitate it. That deliberate, steadfast choice is deeply beloved to Allah.</div></div>
+    <div class="motiv-card"><div class="motiv-icon">💰</div><div class="motiv-title">Give Zakat This Ramadan</div><div class="motiv-text">2.5% of savings held for one lunar year. Charity in Ramadan is multiplied 70 times compared to other months. Every dollar given this month is a monumental investment in the akhira.</div></div>
+  </div>
+  <div class="quote-card"><div class="quote-text">"Every action of the son of Adam is multiplied — good deeds by ten to seven hundred times. Allah says: Except fasting, for it is for Me and I shall reward it Myself."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Muslim</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail"><a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<!-- TRACKER -->
+<div id="tab-tracker" class="panel">
+  <div class="section-title">📿 Prayer Tracker</div>
+  <div class="section-sub">Ramadan 1447 · 19 Feb – 19 Mar 2026</div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="statDone">0</div><div class="stat-label">Performed</div></div>
+    <div class="stat-box"><div class="stat-num" id="statMissed" style="color:var(--red)">0</div><div class="stat-label">Missed</div></div>
+    <div class="stat-box"><div class="stat-num" id="statPct">0%</div><div class="stat-label">Completion</div></div>
+    <div class="stat-box"><div class="stat-num" id="statDays">0</div><div class="stat-label">Days Logged</div></div>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progBar" style="width:0%"></div></div>
+  <div style="text-align:center;font-size:9px;color:var(--text-dim);margin-bottom:12px;">Overall Ramadan Prayer Completion</div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:4px;">Today's Prayers</div>
+    <div style="text-align:center;font-size:10px;color:var(--text-dim);margin-bottom:12px;" id="todayTrackerLabel"></div>
+    <div id="todayRows"></div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:4px;">Full 30-Day Record</div>
+    <div style="text-align:center;font-size:9px;color:var(--text-dim);margin-bottom:12px;">✨ = Laylatul Qadr night · Tap ✓ or ✗ to log</div>
+    <div style="overflow-x:auto;"><div class="tracker-grid" id="fullGrid"></div></div>
+  </div>
+  <div class="card">
+    <div class="section-title" style="font-size:13px;margin-bottom:9px;">💾 Save & Backup Data</div>
+    <p style="font-size:11px;color:var(--text-dim);margin-bottom:12px;line-height:1.7;">Data saves automatically in your browser. Export a JSON file to keep it safe across devices. Import any time to restore your complete prayer record.</p>
+    <div class="btn-row">
+      <button class="btn primary" onclick="exportData()">⬇️ Export Backup</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()">⬆️ Import</button>
+      <button class="btn" onclick="copyJSON()">📋 Copy JSON</button>
+    </div>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <div id="backupStatus" style="margin-top:9px;font-size:10px;color:var(--text-dim);"></div>
+  </div>
+  <div class="quote-card"><div class="quote-text">"The first matter that the slave will be brought to account for on the Day of Judgment is the prayer. If it is sound, then the rest of his deeds will be sound."</div><div class="quote-src">— Prophet Muhammad ﷺ · at-Tabarani</div></div>
+  <div class="quote-card"><div class="quote-text">إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ — "Indeed, prayer prohibits immorality and wrongdoing."</div><div class="quote-src">— Quran 29:45</div></div>
+  <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail">Ramadan 2026 Tracker · <a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
+</div>
+
+<script>
+// STARS
+(function(){const c=document.getElementById('stars');for(let i=0;i<70;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2+.5;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*5}s;opacity:${Math.random()*.4};`;c.appendChild(s);}})();
+
+// CITY DATA — sourced from hamariweb.com, propakistani.pk, dailypakistan, aljazeera (Day 1, 19 Feb 2026)
+const CITIES={
+  rawalpindi:{name:'Rawalpindi',flag:'📍',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times rawalpindi today',sehri:'05:24 AM',iftar:'05:57 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:24',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:24'},{n:'Sunrise',a:'طلوع',t:'06:43'},{n:'Dhuhr',a:'ظہر',t:'12:24'},{n:'Asr',a:'عصر',t:'15:52'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'17:57',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:26'},{n:'Tarawih',a:'تراویح',t:'19:50'}]},
+  karachi:{name:'Karachi',flag:'🌊',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times karachi today',sehri:'05:46 AM',iftar:'06:29 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:46',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:46'},{n:'Sunrise',a:'طلوع',t:'07:01'},{n:'Dhuhr',a:'ظہر',t:'12:30'},{n:'Asr',a:'عصر',t:'15:56'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'18:29',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:51'},{n:'Tarawih',a:'تراویح',t:'20:15'}]},
+  lahore:{name:'Lahore',flag:'🌹',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times lahore today',sehri:'05:18 AM',iftar:'05:54 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:18',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:18'},{n:'Sunrise',a:'طلوع',t:'06:37'},{n:'Dhuhr',a:'ظہر',t:'12:22'},{n:'Asr',a:'عصر',t:'15:50'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'17:54',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:21'},{n:'Tarawih',a:'تراویح',t:'19:45'}]},
+  peshawar:{name:'Peshawar',flag:'🏔️',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times peshawar today',sehri:'05:09 AM',iftar:'05:47 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:09',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:09'},{n:'Sunrise',a:'طلوع',t:'06:28'},{n:'Dhuhr',a:'ظہر',t:'12:18'},{n:'Asr',a:'عصر',t:'15:45'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'17:47',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:15'},{n:'Tarawih',a:'تراویح',t:'19:40'}]},
+  quetta:{name:'Quetta',flag:'🏜️',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times quetta today',sehri:'05:30 AM',iftar:'06:07 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:30',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:30'},{n:'Sunrise',a:'طلوع',t:'06:50'},{n:'Dhuhr',a:'ظہر',t:'12:31'},{n:'Asr',a:'عصر',t:'15:58'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'18:07',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:34'},{n:'Tarawih',a:'تراویح',t:'19:58'}]},
+  multan:{name:'Multan',flag:'☀️',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times multan today',sehri:'05:22 AM',iftar:'06:01 PM',
+    prayers:[{n:'Sehri Ends',a:'سحری',t:'05:22',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:22'},{n:'Sunrise',a:'طلوع',t:'06:41'},{n:'Dhuhr',a:'ظہر',t:'12:24'},{n:'Asr',a:'عصر',t:'15:52'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'18:01',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:27'},{n:'Tarawih',a:'تراویح',t:'19:50'}]},
+  dubai:{name:'Dubai',flag:'🇦🇪',tz:'Asia/Dubai',tzLabel:'GST — UTC+4',googleQ:'prayer times dubai today',sehri:'05:42 AM',iftar:'06:06 PM',
+    prayers:[{n:'Sehri Ends',a:'سحور',t:'05:42',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:42'},{n:'Sunrise',a:'شروق',t:'06:53'},{n:'Dhuhr',a:'ظهر',t:'12:31'},{n:'Asr',a:'عصر',t:'15:51'},{n:'Maghrib / Iftar',a:'مغرب / إفطار',t:'18:06',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:24'},{n:'Tarawih',a:'تراويح',t:'19:50'}]},
+  abudhabi:{name:'Abu Dhabi',flag:'🇦🇪',tz:'Asia/Dubai',tzLabel:'GST — UTC+4',googleQ:'prayer times abu dhabi today',sehri:'05:43 AM',iftar:'06:07 PM',
+    prayers:[{n:'Sehri Ends',a:'سحور',t:'05:43',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:43'},{n:'Sunrise',a:'شروق',t:'06:54'},{n:'Dhuhr',a:'ظهر',t:'12:31'},{n:'Asr',a:'عصر',t:'15:52'},{n:'Maghrib / Iftar',a:'مغرب / إفطار',t:'18:07',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:25'},{n:'Tarawih',a:'تراويح',t:'19:51'}]},
+  riyadh:{name:'Riyadh',flag:'🇸🇦',tz:'Asia/Riyadh',tzLabel:'AST — UTC+3',googleQ:'prayer times riyadh today',sehri:'05:41 AM',iftar:'06:13 PM',
+    prayers:[{n:'Sehri Ends',a:'سحور',t:'05:41',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:41'},{n:'Sunrise',a:'شروق',t:'06:55'},{n:'Dhuhr',a:'ظهر',t:'12:21'},{n:'Asr',a:'عصر',t:'15:44'},{n:'Maghrib / Iftar',a:'مغرب / إفطار',t:'18:13',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:37'},{n:'Tarawih',a:'تراويح',t:'20:00'}]},
+  mecca:{name:'Mecca',flag:'🕋',tz:'Asia/Riyadh',tzLabel:'AST — UTC+3',googleQ:'prayer times mecca makkah today',sehri:'05:41 AM',iftar:'06:13 PM',
+    prayers:[{n:'Sehri Ends',a:'سحور',t:'05:41',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:41'},{n:'Sunrise',a:'شروق',t:'06:54'},{n:'Dhuhr',a:'ظهر',t:'12:27'},{n:'Asr',a:'عصر',t:'15:47'},{n:'Maghrib / Iftar',a:'مغرب / إفطار',t:'18:13',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:37'},{n:'Tarawih',a:'تراويح',t:'20:00'}]},
+  istanbul:{name:'Istanbul',flag:'🇹🇷',tz:'Europe/Istanbul',tzLabel:'TRT — UTC+3',googleQ:'prayer times istanbul today',sehri:'06:37 AM',iftar:'06:26 PM',
+    prayers:[{n:'Sehri / İmsak',a:'سحور / İmsak',t:'06:37',type:'sehri'},{n:'Fajr / Fecr',a:'فجر',t:'06:37'},{n:'Sunrise / Güneş',a:'شروق',t:'08:04'},{n:'Dhuhr / Öğle',a:'ظهر',t:'13:08'},{n:'Asr / İkindi',a:'عصر',t:'16:16'},{n:'Maghrib / İftar',a:'مغرب / إفطار',t:'18:26',type:'iftar'},{n:'Isha / Yatsı',a:'عشاء',t:'19:47'},{n:'Tarawih / Teravih',a:'تراويح',t:'20:15'}]},
+  cairo:{name:'Cairo',flag:'🇪🇬',tz:'Africa/Cairo',tzLabel:'EET — UTC+2',googleQ:'prayer times cairo today',sehri:'04:49 AM',iftar:'05:48 PM',
+    prayers:[{n:'Sehri Ends',a:'سحور',t:'04:49',type:'sehri'},{n:'Fajr',a:'فجر',t:'04:49'},{n:'Sunrise',a:'شروق',t:'06:10'},{n:'Dhuhr',a:'ظهر',t:'12:01'},{n:'Asr',a:'عصر',t:'15:17'},{n:'Maghrib / Iftar',a:'مغرب / إفطار',t:'17:48',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:08'},{n:'Tarawih',a:'تراويح',t:'19:35'}]},
+  newyork:{name:'New York',flag:'🇺🇸',tz:'America/New_York',tzLabel:'EST — UTC-5',googleQ:'prayer times new york today',sehri:'05:29 AM',iftar:'05:19 PM',
+    prayers:[{n:'Sehri Ends',a:'Sehri',t:'05:29',type:'sehri'},{n:'Fajr',a:'Fajr',t:'05:29'},{n:'Sunrise',a:'Sunrise',t:'06:47'},{n:'Dhuhr',a:'Dhuhr',t:'12:19'},{n:'Asr',a:'Asr',t:'15:23'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'17:19',type:'iftar'},{n:'Isha',a:'Isha',t:'18:43'},{n:'Tarawih',a:'Tarawih',t:'19:10'}]},
+  losangeles:{name:'Los Angeles',flag:'🇺🇸',tz:'America/Los_Angeles',tzLabel:'PST — UTC-8',googleQ:'prayer times los angeles today',sehri:'05:44 AM',iftar:'05:47 PM',
+    prayers:[{n:'Sehri Ends',a:'Sehri',t:'05:44',type:'sehri'},{n:'Fajr',a:'Fajr',t:'05:44'},{n:'Sunrise',a:'Sunrise',t:'06:58'},{n:'Dhuhr',a:'Dhuhr',t:'12:30'},{n:'Asr',a:'Asr',t:'15:44'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'17:47',type:'iftar'},{n:'Isha',a:'Isha',t:'19:06'},{n:'Tarawih',a:'Tarawih',t:'19:35'}]},
+  london:{name:'London',flag:'🇬🇧',tz:'Europe/London',tzLabel:'GMT — UTC+0',googleQ:'prayer times london today',sehri:'05:38 AM',iftar:'04:57 PM',
+    prayers:[{n:'Sehri Ends',a:'Sehri',t:'05:38',type:'sehri'},{n:'Fajr',a:'Fajr',t:'05:38'},{n:'Sunrise',a:'Sunrise',t:'07:11'},{n:'Dhuhr',a:'Dhuhr',t:'12:18'},{n:'Asr',a:'Asr',t:'15:05'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'16:57',type:'iftar'},{n:'Isha',a:'Isha',t:'18:27'},{n:'Tarawih',a:'Tarawih',t:'19:00'}]},
+  toronto:{name:'Toronto',flag:'🇨🇦',tz:'America/Toronto',tzLabel:'EST — UTC-5',googleQ:'prayer times toronto today',sehri:'05:32 AM',iftar:'05:25 PM',
+    prayers:[{n:'Sehri Ends',a:'Sehri',t:'05:32',type:'sehri'},{n:'Fajr',a:'Fajr',t:'05:32'},{n:'Sunrise',a:'Sunrise',t:'06:51'},{n:'Dhuhr',a:'Dhuhr',t:'12:20'},{n:'Asr',a:'Asr',t:'15:23'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'17:25',type:'iftar'},{n:'Isha',a:'Isha',t:'18:48'},{n:'Tarawih',a:'Tarawih',t:'19:15'}]},
+  kualalumpur:{name:'Kuala Lumpur',flag:'🇲🇾',tz:'Asia/Kuala_Lumpur',tzLabel:'MYT — UTC+8',googleQ:'prayer times kuala lumpur today',sehri:'06:01 AM',iftar:'07:24 PM',
+    prayers:[{n:'Sehri / Imsak',a:'Sehri',t:'06:01',type:'sehri'},{n:'Fajr / Subuh',a:'Subuh',t:'06:01'},{n:'Sunrise / Syuruk',a:'Syuruk',t:'07:17'},{n:'Dhuhr / Zohor',a:'Zohor',t:'13:20'},{n:'Asr / Asar',a:'Asar',t:'16:36'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'19:24',type:'iftar'},{n:'Isha / Isyak',a:'Isyak',t:'20:34'},{n:'Tarawih',a:'Tarawih',t:'21:00'}]},
+  jakarta:{name:'Jakarta',flag:'🇮🇩',tz:'Asia/Jakarta',tzLabel:'WIB — UTC+7',googleQ:'prayer times jakarta today',sehri:'04:35 AM',iftar:'06:03 PM',
+    prayers:[{n:'Sehri / Imsak',a:'Imsak',t:'04:35',type:'sehri'},{n:'Fajr / Subuh',a:'Subuh',t:'04:35'},{n:'Sunrise / Terbit',a:'Terbit',t:'05:53'},{n:'Dhuhr / Dzuhur',a:'Dzuhur',t:'11:58'},{n:'Asr / Ashar',a:'Ashar',t:'15:14'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'18:03',type:'iftar'},{n:'Isha / Isya',a:'Isya',t:'19:12'},{n:'Tarawih',a:'Tarawih',t:'19:40'}]}
+};
+
+const WORLD_CLOCKS=[
+  {label:'📍 Rawalpindi',tz:'Asia/Karachi'},{label:'🇦🇪 Dubai',tz:'Asia/Dubai'},
+  {label:'🇸🇦 Riyadh',tz:'Asia/Riyadh'},{label:'🇹🇷 Istanbul',tz:'Europe/Istanbul'},
+  {label:'🇬🇧 London',tz:'Europe/London'},{label:'🇺🇸 New York',tz:'America/New_York'},
+  {label:'🇲🇾 KL',tz:'Asia/Kuala_Lumpur'},{label:'🇮🇩 Jakarta',tz:'Asia/Jakarta'}
+];
+
+// Ramadan 1447: Day 1 = 19 Feb 2026, Day 29/30 = 19/20 Mar 2026
+// Laylatul Qadr: odd nights. The "night" of Nth Ramadan STARTS at Maghrib on the Nth day.
+// So the night of 21st Ramadan = evening of Mar 11 (Day 21)
+// Mar 11=21, Mar 13=23, Mar 15=25, Mar 17=27, Mar 19=29
+const RAMADAN_START=new Date('2026-02-19');
+const LAYLATUL_DATES=['2026-03-11','2026-03-13','2026-03-15','2026-03-17','2026-03-19'];
+const HIJRI_MONTHS=['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Awwal','Jumada al-Thani',"Rajab","Sha'ban",'Ramadan','Shawwal','Dhu al-Qi\'dah','Dhu al-Hijjah'];
+const GRE_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAY_NAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function getDayKey(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${dd}`;}
+function getRamDay(date){const d=new Date(date);d.setHours(0,0,0,0);const s=new Date(RAMADAN_START);s.setHours(0,0,0,0);const diff=Math.floor((d-s)/86400000);return diff>=0&&diff<30?diff+1:null;}
+
+function gregToJD(y,m,d){if(m<3){y--;m+=12;}const A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5;}
+function jdToHijri(jd){jd=Math.floor(jd)+.5;const z=jd-1948438.5,a=Math.floor(z/10631),b=z-10631*a,c=Math.floor((b-29.5001)/354.3671),dd=Math.floor(b-354.3671*Math.floor(c+.5)),e=Math.floor((dd+.5)/29.5001);const month=e<12?e+1:1,day=Math.floor(dd-29.5001*(e-1)+1),year=30*a+c+1;return{day,month,year};}
+
+function getHijri(d){
+  const ramDay=getRamDay(d);
+  if(ramDay) return {d:ramDay,m:'Ramadan',y:1447};
+  const jd=gregToJD(d.getFullYear(),d.getMonth()+1,d.getDate());
+  const h=jdToHijri(jd);
+  return {d:h.day,m:HIJRI_MONTHS[h.month-1],y:h.year};
+}
+
+// CALENDAR
+let calYear=2026,calMonth=1;
+function buildCalendar(){
+  const hd=document.getElementById('calHeaders'),g=document.getElementById('calGrid');
+  document.getElementById('calMonthLabel').textContent=`${GRE_MONTHS[calMonth]} ${calYear}`;
+  hd.innerHTML=DAY_NAMES.map(d=>`<div class="cal-hdr">${d}</div>`).join('');
+  const fd=new Date(calYear,calMonth,1).getDay();
+  const dim=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date();today.setHours(0,0,0,0);
+  g.innerHTML='';
+  for(let i=0;i<fd;i++){const e=document.createElement('div');e.className='cal-day empty';g.appendChild(e);}
+  for(let d=1;d<=dim;d++){
+    const dt=new Date(calYear,calMonth,d);dt.setHours(0,0,0,0);
+    const dk=getDayKey(dt);
+    const h=getHijri(dt);
+    const isToday=dt.getTime()===today.getTime();
+    const ramDay=getRamDay(dt);
+    const isLayl=LAYLATUL_DATES.includes(dk);
+    let cls='cal-day';
+    if(ramDay) cls+=' ramadan';
+    if(isLayl) cls+=' laylatul';
+    if(isToday) cls+=' today';
+    const hijriStr=h.m==='Ramadan'?`${h.d} Ram 1447`:`${h.d} ${h.m.slice(0,5)}`;
+    const ramBadge=ramDay?`<div class="cal-badge" style="color:${isLayl?'#c39bd3':'var(--gold-dim)'}">${isLayl?'✨ R'+ramDay:'R'+ramDay}</div>`:'';
+    const el=document.createElement('div');el.className=cls;
+    el.innerHTML=`<div class="cal-day-num">${d}</div><div class="cal-hijri">${hijriStr}</div>${ramBadge}`;
+    g.appendChild(el);
+  }
+}
+function calPrev(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}buildCalendar();}
+function calNext(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}buildCalendar();}
+
+// PRAYER ROWS
+function renderPrayers(id,key){
+  const c=document.getElementById(id);if(!c) return;
+  const city=CITIES[key];if(!city) return;
+  const now=new Date();
+  const nowStr=now.toLocaleTimeString('en-GB',{timeZone:city.tz,hour:'2-digit',minute:'2-digit'});
+  const[nh,nm]=nowStr.split(':').map(Number);
+  const nowM=nh*60+nm;
+  c.innerHTML='';
+  city.prayers.forEach(p=>{
+    const[ph,pm]=p.t.split(':').map(Number);
+    const pM=ph*60+pm;
+    const isCur=Math.abs(pM-nowM)<=20&&nowM<=pM;
+    let cls='prayer-row';
+    if(p.type==='sehri') cls+=' sehri-row';
+    else if(p.type==='iftar') cls+=' iftar-row';
+    if(isCur) cls+=' current-prayer';
+    const b=isCur?'<span class="badge badge-now">NOW</span>':p.type==='sehri'?'<span class="badge badge-sehri">SEHRI</span>':p.type==='iftar'?'<span class="badge badge-iftar">IFTAR</span>':'';
+    const row=document.createElement('div');row.className=cls;
+    row.innerHTML=`<div><div class="prayer-name">${p.n}${b}</div><div class="prayer-arabic">${p.a}</div></div><div class="prayer-time-val">${p.t}</div>`;
+    c.appendChild(row);
+  });
+}
+
+function renderFast(id,key){
+  const c=document.getElementById(id);if(!c) return;
+  const ct=CITIES[key];
+  c.innerHTML=`<div class="fast-box"><div class="fast-label">🌅 Sehri Ends</div><div class="fast-time">${ct.sehri}</div><div class="fast-arabic">سحری / سحور</div></div><div class="fast-box"><div class="fast-label">🌇 Iftar Time</div><div class="fast-time">${ct.iftar}</div><div class="fast-arabic">افطار / إفطار</div></div>`;
+}
+
+function renderGLink(id,key){
+  const c=document.getElementById(id);if(!c) return;
+  const ct=CITIES[key];
+  c.innerHTML=`<a class="google-link" href="https://www.google.com/search?q=${encodeURIComponent(ct.googleQ)}" target="_blank">🔍 Live Prayer Times — ${ct.name} on Google</a>`;
+}
+
+// CITY SWITCHERS
+let curCity={pk:'karachi',gulf:'dubai',world:'newyork'};
+function showCity(tab,key,btn){
+  const maps={pk:'pkTabs',gulf:'gulfTabs',world:'worldTabs'};
+  document.querySelectorAll(`#${maps[tab]} .city-btn`).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');curCity[tab]=key;
+  const ct=CITIES[key];
+  if(tab==='pk'){document.getElementById('pkCityName').textContent=`${ct.flag} ${ct.name}`;renderFast('pkFastTimes',key);renderGLink('pkGoogleLink',key);renderPrayers('pkPrayers',key);}
+  else if(tab==='gulf'){document.getElementById('gulfCityName').textContent=`${ct.flag} ${ct.name}`;document.getElementById('gulfCityTZ').textContent=ct.tzLabel;renderFast('gulfFastTimes',key);renderGLink('gulfGoogleLink',key);renderPrayers('gulfPrayers',key);}
+  else{document.getElementById('worldCityName').textContent=`${ct.flag} ${ct.name}`;document.getElementById('worldCityTZ').textContent=ct.tzLabel;renderFast('worldFastTimes',key);renderGLink('worldGoogleLink',key);renderPrayers('worldPrayers',key);}
+}
+
+// CLOCKS
+function fmt(tz){return new Date().toLocaleTimeString('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+function fmtDate(tz){return new Date().toLocaleDateString('en-GB',{timeZone:tz,weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+
+function updateClocks(){
+  const mc=document.getElementById('mainClock');if(mc) mc.textContent=fmt('Asia/Karachi');
+  const md=document.getElementById('mainDate');if(md) md.textContent=fmtDate('Asia/Karachi');
+  // Islamic date
+  const pkNow=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Karachi'}));
+  const h=getHijri(pkNow);
+  const id=document.getElementById('islamicDate');
+  if(id) id.textContent=h.m==='Ramadan'?`🌙 ${h.d} Ramadan 1447 AH — Day ${h.d} of Ramadan`:`${h.d} ${h.m} ${h.y} AH`;
+  // Regional
+  const rwp=document.getElementById('rwpClock');if(rwp) rwp.textContent=fmt('Asia/Karachi');
+  const pk=document.getElementById('pkClock');if(pk) pk.textContent=fmt('Asia/Karachi');
+  const gf=document.getElementById('gulfClock');if(gf) gf.textContent=fmt(CITIES[curCity.gulf]?.tz||'Asia/Dubai');
+  const wc=document.getElementById('worldClock');if(wc) wc.textContent=fmt(CITIES[curCity.world]?.tz||'America/New_York');
+  const wclocks=document.getElementById('worldClocks');
+  if(wclocks) wclocks.innerHTML=WORLD_CLOCKS.map(c=>`<div class="city-time-row"><span class="city-label">${c.label}</span><span class="city-clock">${fmt(c.tz)}</span></div>`).join('');
+  updateCountdown();
+}
+
+function updateCountdown(){
+  const city=CITIES.rawalpindi;
+  const localStr=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Karachi',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const[lh,lm,ls]=localStr.split(':').map(Number);
+  const nowS=lh*3600+lm*60+ls;
+  const plist=city.prayers.filter(p=>!['Sunrise','Tarawih'].includes(p.n));
+  let next=null;
+  for(const p of plist){const[ph,pm]=p.t.split(':').map(Number);const pS=ph*3600+pm*60;if(pS>nowS){next={name:p.n,secs:pS};break;}}
+  if(!next){const f=city.prayers.find(p=>p.n==='Fajr');if(f){const[ph,pm]=f.t.split(':').map(Number);next={name:'Fajr (Tomorrow)',secs:ph*3600+pm*60+86400};}}
+  if(!next) return;
+  let diff=next.secs-nowS;if(diff<0) diff+=86400;
+  const hh=Math.floor(diff/3600),mm=Math.floor(diff%3600/60),ss=diff%60;
+  const cv=document.getElementById('nextCountdown');const nl=document.getElementById('nextLabel');
+  if(cv) cv.textContent=`${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+  if(nl) nl.textContent=`Until ${next.name} — Rawalpindi`;
+}
+
+// TRACKER
+const P5=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+let tData={};
+try{tData=JSON.parse(localStorage.getItem('r1447tracker')||'{}');}catch(e){}
+function save(){try{localStorage.setItem('r1447tracker',JSON.stringify(tData));}catch(e){}updateStats();}
+
+function toggle(dk,p,btn){
+  const k=`${dk}_${p}`;const cur=tData[k]||'none';
+  if(cur==='none'){tData[k]='done';btn.textContent='✓';btn.className='mark-btn done';}
+  else if(cur==='done'){tData[k]='missed';btn.textContent='✗';btn.className='mark-btn missed';}
+  else{tData[k]='none';btn.textContent='○';btn.className='mark-btn';}
+  save();
+}
+function toggleToday(dk,p,btn){
+  toggle(dk,p,btn);
+  const st=btn.closest('[data-row]')?.querySelector('.tstatus');
+  if(st){const v=tData[`${dk}_${p}`]||'none';st.textContent=v==='done'?'✅ Performed':v==='missed'?'❌ Missed':'⬜ Not logged';}
+  buildGrid();
+}
+
+function updateStats(){
+  let done=0,missed=0,daysW=0;
+  for(let d=0;d<30;d++){
+    const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);
+    const dk=getDayKey(dt);let has=false;
+    P5.forEach(p=>{const v=tData[`${dk}_${p}`]||'none';if(v==='done'){done++;has=true;}else if(v==='missed'){missed++;has=true;}});
+    if(has) daysW++;
+  }
+  const tot=30*5;
+  ['statDone','statMissed','statPct','statDays'].forEach((id,i)=>{const el=document.getElementById(id);if(el) el.textContent=[done,missed,Math.round(done/tot*100)+'%',daysW][i];});
+  const pb=document.getElementById('progBar');if(pb) pb.style.width=Math.round(done/tot*100)+'%';
+}
+
+function buildTodayRows(){
+  const today=new Date();const dk=getDayKey(today);
+  const lbl=document.getElementById('todayTrackerLabel');
+  if(lbl) lbl.textContent=today.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const c=document.getElementById('todayRows');if(!c) return;c.innerHTML='';
+  P5.forEach(p=>{
+    const v=tData[`${dk}_${p}`]||'none';
+    const icon=v==='done'?'✓':v==='missed'?'✗':'○';
+    const cls=v==='done'?'mark-btn done':v==='missed'?'mark-btn missed':'mark-btn';
+    const st=v==='done'?'✅ Performed':v==='missed'?'❌ Missed':'⬜ Not logged';
+    const row=document.createElement('div');row.setAttribute('data-row','1');
+    row.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.07);';
+    row.innerHTML=`<div><div style="font-family:'Cinzel',serif;font-size:12px;color:var(--text)">${p}</div><div class="tstatus" style="font-size:9px;color:var(--text-dim);margin-top:2px">${st}</div></div><button class="${cls}" style="width:32px;height:32px;font-size:13px" onclick="toggleToday('${dk}','${p}',this)">${icon}</button>`;
+    c.appendChild(row);
+  });
+}
+
+function buildGrid(){
+  const g=document.getElementById('fullGrid');if(!g) return;
+  const today=new Date();today.setHours(0,0,0,0);
+  g.innerHTML='';
+  for(let d=0;d<30;d++){
+    const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);dt.setHours(0,0,0,0);
+    const dk=getDayKey(dt);
+    const isToday=dt.getTime()===today.getTime();
+    const isLayl=LAYLATUL_DATES.includes(dk);
+    const div=document.createElement('div');
+    div.className='tracker-day'+(isToday?' today-day':'');
+    if(isLayl) div.style.borderColor='rgba(155,89,182,0.45)';
+    const dateStr=dt.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});
+    div.innerHTML=`<div class="tracker-day-label">${isLayl?'<span style="color:#c39bd3;font-size:8px">✨Qadr?</span><br>':''}Day ${d+1}<br>${dateStr}</div><div class="prayer-marks" id="pm_${dk}"></div>`;
+    g.appendChild(div);
+    const marks=div.querySelector(`#pm_${dk}`);
+    P5.forEach(p=>{
+      const v=tData[`${dk}_${p}`]||'none';
+      const icon=v==='done'?'✓':v==='missed'?'✗':'○';
+      const cls=v==='done'?'mark-btn done':v==='missed'?'mark-btn missed':'mark-btn';
+      const row=document.createElement('div');row.className='prayer-mark';
+      row.innerHTML=`<span class="prayer-mark-name">${p.slice(0,3)}</span><button class="${cls}" onclick="toggle('${dk}','${p}',this)">${icon}</button>`;
+      marks.appendChild(row);
+    });
+  }
+  updateStats();
+}
+
+function exportData(){
+  const data={version:2,export:new Date().toISOString(),ramadan:'1447',tracker:tData};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`ramadan-1447-prayers-${getDayKey(new Date())}.json`;a.click();
+  document.getElementById('backupStatus').textContent='✅ Exported — '+new Date().toLocaleTimeString();
+}
+function importData(e){
+  const f=e.target.files[0];if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{try{const d=JSON.parse(ev.target.result);tData=d.tracker||d;save();buildGrid();buildTodayRows();document.getElementById('backupStatus').textContent='✅ Imported!';}catch(err){document.getElementById('backupStatus').textContent='❌ Invalid file.';}};
+  r.readAsText(f);
+}
+function copyJSON(){
+  navigator.clipboard.writeText(JSON.stringify({v:2,tracker:tData},null,2)).then(()=>{document.getElementById('backupStatus').textContent='✅ Copied!';}).catch(()=>{document.getElementById('backupStatus').textContent='❌ Try Export instead.';});
+}
+
+// TAB
+function showTab(name,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(name==='tracker'){buildGrid();buildTodayRows();}
+}
+
+// INIT
+buildCalendar();
+renderPrayers('rwpPrayers','rawalpindi');
+renderPrayers('pkPrayers','karachi');renderFast('pkFastTimes','karachi');renderGLink('pkGoogleLink','karachi');
+renderPrayers('gulfPrayers','dubai');renderFast('gulfFastTimes','dubai');renderGLink('gulfGoogleLink','dubai');
+renderPrayers('worldPrayers','newyork');renderFast('worldFastTimes','newyork');renderGLink('worldGoogleLink','newyork');
+buildTodayRows();updateStats();
+updateClocks();setInterval(updateClocks,1000);
+</script>
+</body>
+</html>
