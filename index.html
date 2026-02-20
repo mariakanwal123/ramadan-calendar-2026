@@ -156,10 +156,25 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .msr-chip.kept{background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.3);}
 .msr-chip.missed{background:rgba(231,76,60,0.15);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);}
 .msr-chip.exempt{background:rgba(243,156,18,0.15);color:#f39c12;border:1px solid rgba(243,156,18,0.3);}
+
+/* ===== DOWNLOAD BUTTON ===== */
+.dl-btn-wrap{position:fixed;bottom:20px;right:16px;z-index:9999;}
+.dl-btn{display:flex;align-items:center;gap:6px;padding:11px 17px;border-radius:30px;background:linear-gradient(135deg,var(--gold),#9a7228);color:#04040a;font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 4px 22px rgba(201,168,76,0.5);transition:all .25s;}
+.dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(201,168,76,0.65);}
+.dl-btn:active{transform:translateY(0);}
+.dl-toast{position:fixed;bottom:75px;right:16px;z-index:9999;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;padding:8px 14px;border-radius:20px;letter-spacing:.5px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.dl-toast.show{opacity:1;}
 </style>
 </head>
 <body>
 <div class="stars" id="stars"></div>
+
+<!-- DOWNLOAD BUTTON (fixed, bottom-right) -->
+<div class="dl-btn-wrap">
+  <button class="dl-btn" onclick="downloadApp()" title="Download for offline use">⬇️ Download</button>
+</div>
+<div class="dl-toast" id="dlToast">✅ Saved! Open the .html file anytime offline.</div>
+
 <nav class="tab-bar">
   <button class="tab-btn active" onclick="showTab('calendar',this)">🌙 Cal</button>
   <button class="tab-btn" onclick="showTab('rawalpindi',this)">📍 RWP</button>
@@ -225,7 +240,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="dua-trans">"O Allah! I fasted for You and I believe in You and I put my trust in You and I break my fast with Your sustenance."</div>
   </div>
   <div class="quote-card"><div class="quote-text">شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ<br>"The month of Ramadan in which the Quran was revealed as guidance for mankind."</div><div class="quote-src">— Quran 2:185</div></div>
-  <div class="quote-card"><div class="quote-text">"When Ramadan enters, the gates of Paradise are opened, the gates of Hellfire are closed, and the devils are chained."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari & Muslim</div></div>
+  <div class="quote-card"><div class="quote-text">"When Ramadan enters, the gates of Paradise are opened, the gates of Hellfire are closed, and the devils are chained."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari &amp; Muslim</div></div>
   <div class="quote-card"><div class="quote-text">لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ — "The Night of Decree is better than a thousand months."</div><div class="quote-src">— Quran 97:3</div></div>
   <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail">Ramadan 2026 Guide · <a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
 </div>
@@ -258,7 +273,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="motiv-card"><div class="motiv-icon">📖</div><div class="motiv-title">Complete the Quran</div><div class="motiv-text">4 pages after each of the 5 daily prayers = complete Khatm in 30 days. Start today. By Eid ul Fitr you will have completed the Book of Allah once this blessed month.</div></div>
     <div class="motiv-card"><div class="motiv-icon">🍛</div><div class="motiv-title">Saddar Bazaar Iftar Culture</div><div class="motiv-text">Rawalpindi's streets come alive at Maghrib. Samosas, pakoras, channa chaat, dahi bhallay — the community spirit of Iftar in Pindi is something else entirely. Embrace it.</div></div>
   </div>
-  <div class="quote-card"><div class="quote-text">"Take suhoor, for in suhoor there is blessing."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari & Muslim</div></div>
+  <div class="quote-card"><div class="quote-text">"Take suhoor, for in suhoor there is blessing."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari &amp; Muslim</div></div>
   <div class="quote-card"><div class="quote-text">"Whoever fasts Ramadan out of faith and in the hope of reward, all his previous sins will be forgiven."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari</div></div>
   <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail"><a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
 </div>
@@ -300,7 +315,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 <!-- GULF -->
 <div id="tab-gulf" class="panel">
-  <div class="section-title">🌍 Gulf & Middle East</div>
+  <div class="section-title">🌍 Gulf &amp; Middle East</div>
   <div class="section-sub">UAE · Saudi Arabia · Turkey · Egypt</div>
   <div class="city-tabs" id="gulfTabs">
     <button class="city-btn active" onclick="showCity('gulf','dubai',this)">🇦🇪 Dubai</button>
@@ -390,7 +405,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div style="overflow-x:auto;"><div class="tracker-grid" id="fullGrid"></div></div>
   </div>
   <div class="card">
-    <div class="section-title" style="font-size:13px;margin-bottom:9px;">💾 Save & Backup Data</div>
+    <div class="section-title" style="font-size:13px;margin-bottom:9px;">💾 Save &amp; Backup Data</div>
     <p style="font-size:11px;color:var(--text-dim);margin-bottom:12px;line-height:1.7;">Data saves automatically in your browser. Export a JSON file to keep it safe across devices. Import any time to restore your complete prayer record.</p>
     <div class="btn-row">
       <button class="btn primary" onclick="exportData()">⬇️ Export Backup</button>
@@ -408,9 +423,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <!-- FAST TRACKER -->
 <div id="tab-fasttracker" class="panel">
   <div class="section-title">🌙 Fast Tracker</div>
-  <div class="section-sub">Ramadan 1447 · Mark & save every roza</div>
-
-  <!-- STATS -->
+  <div class="section-sub">Ramadan 1447 · Mark &amp; save every roza</div>
   <div class="stats-row" id="fastStatsRow">
     <div class="fstat-box"><div class="fstat-num" id="fstatKept" style="color:var(--green)">0</div><div class="fstat-label">Kept</div></div>
     <div class="fstat-box"><div class="fstat-num" id="fstatMissed" style="color:var(--red)">0</div><div class="fstat-label">Missed</div></div>
@@ -419,8 +432,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
   <div class="progress-bar-wrap" style="margin-bottom:4px;"><div class="progress-bar" id="fastProgBar" style="width:0%;background:linear-gradient(90deg,#2ecc71,#27ae60);"></div></div>
   <div style="text-align:center;font-size:9px;color:var(--text-dim);margin-bottom:14px;">Fasts Kept — Ramadan 1447</div>
-
-  <!-- TODAY FAST -->
   <div class="card" id="todayFastCard">
     <div class="section-title" style="font-size:13px;margin-bottom:4px;">Today's Fast</div>
     <div style="text-align:center;font-size:10px;color:var(--text-dim);margin-bottom:14px;" id="todayFastLabel"></div>
@@ -431,36 +442,26 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     </div>
     <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-dim);" id="todayFastStatus"></div>
   </div>
-
-  <!-- LEGEND -->
   <div class="fast-legend">
     <div class="fl-item"><div class="fl-dot" style="background:#2ecc71;">✓</div>Kept</div>
     <div class="fl-item"><div class="fl-dot" style="background:#e74c3c;">✗</div>Missed</div>
     <div class="fl-item"><div class="fl-dot" style="background:#f39c12;">~</div>Exempt (travel/illness)</div>
     <div class="fl-item"><div class="fl-dot" style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);">○</div>Not logged</div>
   </div>
-
-  <!-- 30 DAY GRID -->
   <div class="card">
     <div class="section-title" style="font-size:13px;margin-bottom:4px;">30-Day Fast Record</div>
     <div style="text-align:center;font-size:9px;color:var(--text-dim);margin-bottom:12px;">✨ = Laylatul Qadr · Tap each button to cycle: ○ → ✓ → ✗ → ~ → ○</div>
     <div class="fast-tracker-grid" id="fastGrid"></div>
   </div>
-
-  <!-- MONTHLY SUMMARY -->
   <div class="card">
     <div class="section-title" style="font-size:13px;margin-bottom:4px;">📊 Monthly Summary</div>
     <div style="text-align:center;font-size:9px;color:var(--text-dim);margin-bottom:12px;">Complete breakdown of your Ramadan 1447 fasts</div>
     <div id="monthlySummary"></div>
   </div>
-
-  <!-- QADA NOTE -->
   <div class="card" style="border-color:rgba(243,156,18,0.25);background:rgba(243,156,18,0.04);">
     <div style="font-family:'Cinzel',serif;font-size:12px;color:#f39c12;margin-bottom:8px;">📝 Qada (Make-up) Fasts</div>
     <div style="font-size:11px;color:var(--text-dim);line-height:1.8;" id="qadaNote">Log your fasts above to see how many Qada fasts you need to make up.</div>
   </div>
-
-  <!-- BACKUP -->
   <div class="card">
     <div class="section-title" style="font-size:13px;margin-bottom:9px;">💾 Save Fast Data</div>
     <p style="font-size:11px;color:var(--text-dim);margin-bottom:12px;line-height:1.7;">Your fast record saves automatically. Export to keep it safe. Import on any device to restore.</p>
@@ -472,9 +473,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <input type="file" id="importFastFile" accept=".json" style="display:none" onchange="importFastData(event)">
     <div id="fastBackupStatus" style="margin-top:9px;font-size:10px;color:var(--text-dim);"></div>
   </div>
-
   <div class="quote-card"><div class="quote-text">مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ<br>"Whoever fasts Ramadan out of faith and in the hope of reward, all his previous sins will be forgiven."</div><div class="quote-src">— Prophet Muhammad ﷺ · Sahih Bukhari</div></div>
-  <div class="quote-card"><div class="quote-text">"Every action of the son of Adam is for himself except fasting — it is for Me and I shall reward it."</div><div class="quote-src">— Hadith Qudsi · Sahih Bukhari & Muslim</div></div>
+  <div class="quote-card"><div class="quote-text">"Every action of the son of Adam is for himself except fasting — it is for Me and I shall reward it."</div><div class="quote-src">— Hadith Qudsi · Sahih Bukhari &amp; Muslim</div></div>
   <div class="cta"><div class="cta-name">Maria Kanwal</div><div class="cta-mail">Ramadan 1447 Fast Tracker · <a href="mailto:medrankseo@gmail.com">medrankseo@gmail.com</a></div></div>
 </div>
 
@@ -483,7 +483,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 // STARS
 (function(){const c=document.getElementById('stars');for(let i=0;i<70;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2+.5;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*5}s;opacity:${Math.random()*.4};`;c.appendChild(s);}})();
 
-// CITY DATA — sourced from hamariweb.com, propakistani.pk, dailypakistan, aljazeera (Day 1, 19 Feb 2026)
+// CITY DATA
 const CITIES={
   rawalpindi:{name:'Rawalpindi',flag:'📍',tz:'Asia/Karachi',tzLabel:'PKT — UTC+5',googleQ:'prayer times rawalpindi today',sehri:'05:24 AM',iftar:'05:57 PM',
     prayers:[{n:'Sehri Ends',a:'سحری',t:'05:24',type:'sehri'},{n:'Fajr',a:'فجر',t:'05:24'},{n:'Sunrise',a:'طلوع',t:'06:43'},{n:'Dhuhr',a:'ظہر',t:'12:24'},{n:'Asr',a:'عصر',t:'15:52'},{n:'Maghrib / Iftar',a:'مغرب / افطار',t:'17:57',type:'iftar'},{n:'Isha',a:'عشاء',t:'19:26'},{n:'Tarawih',a:'تراویح',t:'19:50'}]},
@@ -523,153 +523,25 @@ const CITIES={
     prayers:[{n:'Sehri / Imsak',a:'Imsak',t:'04:35',type:'sehri'},{n:'Fajr / Subuh',a:'Subuh',t:'04:35'},{n:'Sunrise / Terbit',a:'Terbit',t:'05:53'},{n:'Dhuhr / Dzuhur',a:'Dzuhur',t:'11:58'},{n:'Asr / Ashar',a:'Ashar',t:'15:14'},{n:'Maghrib / Iftar',a:'Maghrib / Iftar',t:'18:03',type:'iftar'},{n:'Isha / Isya',a:'Isya',t:'19:12'},{n:'Tarawih',a:'Tarawih',t:'19:40'}]}
 };
 
-// 30-DAY SEHRI & IFTAR SCHEDULE [sehri, iftar] for each Ramadan day (Day 1 = index 0)
-// Times from Google/hamariweb/islamicfinder — verified for Ramadan 1447 (Feb 19 – Mar 19, 2026)
 const SCHEDULE={
-  rawalpindi:[
-    ['05:24 AM','05:57 PM'],['05:23 AM','05:58 PM'],['05:22 AM','05:59 PM'],['05:21 AM','06:00 PM'],['05:20 AM','06:01 PM'],
-    ['05:19 AM','06:02 PM'],['05:18 AM','06:03 PM'],['05:17 AM','06:04 PM'],['05:16 AM','06:05 PM'],['05:14 AM','06:06 PM'],
-    ['05:13 AM','06:07 PM'],['05:12 AM','06:08 PM'],['05:11 AM','06:09 PM'],['05:09 AM','06:10 PM'],['05:08 AM','06:11 PM'],
-    ['05:07 AM','06:12 PM'],['05:05 AM','06:13 PM'],['05:04 AM','06:14 PM'],['05:03 AM','06:15 PM'],['05:01 AM','06:16 PM'],
-    ['05:00 AM','06:17 PM'],['04:58 AM','06:18 PM'],['04:57 AM','06:19 PM'],['04:55 AM','06:20 PM'],['04:54 AM','06:21 PM'],
-    ['04:52 AM','06:22 PM'],['04:51 AM','06:23 PM'],['04:49 AM','06:24 PM'],['04:48 AM','06:25 PM'],['04:46 AM','06:26 PM']
-  ],
-  karachi:[
-    ['05:46 AM','06:29 PM'],['05:45 AM','06:30 PM'],['05:44 AM','06:31 PM'],['05:43 AM','06:32 PM'],['05:42 AM','06:33 PM'],
-    ['05:41 AM','06:34 PM'],['05:40 AM','06:34 PM'],['05:39 AM','06:35 PM'],['05:38 AM','06:36 PM'],['05:37 AM','06:37 PM'],
-    ['05:36 AM','06:38 PM'],['05:35 AM','06:38 PM'],['05:34 AM','06:39 PM'],['05:33 AM','06:40 PM'],['05:32 AM','06:41 PM'],
-    ['05:31 AM','06:42 PM'],['05:30 AM','06:42 PM'],['05:29 AM','06:43 PM'],['05:28 AM','06:44 PM'],['05:27 AM','06:45 PM'],
-    ['05:26 AM','06:45 PM'],['05:25 AM','06:46 PM'],['05:24 AM','06:47 PM'],['05:23 AM','06:48 PM'],['05:21 AM','06:48 PM'],
-    ['05:20 AM','06:49 PM'],['05:19 AM','06:50 PM'],['05:18 AM','06:51 PM'],['05:17 AM','06:51 PM'],['05:16 AM','06:52 PM']
-  ],
-  lahore:[
-    ['05:18 AM','05:54 PM'],['05:17 AM','05:55 PM'],['05:16 AM','05:56 PM'],['05:15 AM','05:57 PM'],['05:14 AM','05:58 PM'],
-    ['05:13 AM','05:59 PM'],['05:12 AM','06:00 PM'],['05:11 AM','06:01 PM'],['05:10 AM','06:02 PM'],['05:08 AM','06:03 PM'],
-    ['05:07 AM','06:04 PM'],['05:06 AM','06:05 PM'],['05:05 AM','06:06 PM'],['05:03 AM','06:07 PM'],['05:02 AM','06:08 PM'],
-    ['05:01 AM','06:09 PM'],['04:59 AM','06:10 PM'],['04:58 AM','06:11 PM'],['04:57 AM','06:12 PM'],['04:55 AM','06:13 PM'],
-    ['04:54 AM','06:14 PM'],['04:52 AM','06:15 PM'],['04:51 AM','06:16 PM'],['04:49 AM','06:17 PM'],['04:48 AM','06:18 PM'],
-    ['04:46 AM','06:19 PM'],['04:44 AM','06:20 PM'],['04:43 AM','06:21 PM'],['04:41 AM','06:22 PM'],['04:40 AM','06:22 PM']
-  ],
-  peshawar:[
-    ['05:09 AM','05:47 PM'],['05:08 AM','05:48 PM'],['05:07 AM','05:49 PM'],['05:06 AM','05:50 PM'],['05:05 AM','05:51 PM'],
-    ['05:04 AM','05:52 PM'],['05:03 AM','05:53 PM'],['05:02 AM','05:54 PM'],['05:00 AM','05:55 PM'],['04:59 AM','05:56 PM'],
-    ['04:58 AM','05:57 PM'],['04:56 AM','05:58 PM'],['04:55 AM','05:59 PM'],['04:54 AM','06:00 PM'],['04:52 AM','06:01 PM'],
-    ['04:51 AM','06:02 PM'],['04:49 AM','06:03 PM'],['04:48 AM','06:04 PM'],['04:46 AM','06:05 PM'],['04:45 AM','06:06 PM'],
-    ['04:43 AM','06:07 PM'],['04:42 AM','06:08 PM'],['04:40 AM','06:09 PM'],['04:38 AM','06:10 PM'],['04:37 AM','06:11 PM'],
-    ['04:35 AM','06:12 PM'],['04:34 AM','06:13 PM'],['04:32 AM','06:14 PM'],['04:30 AM','06:15 PM'],['04:29 AM','06:16 PM']
-  ],
-  quetta:[
-    ['05:30 AM','06:07 PM'],['05:29 AM','06:08 PM'],['05:28 AM','06:09 PM'],['05:27 AM','06:10 PM'],['05:26 AM','06:11 PM'],
-    ['05:25 AM','06:12 PM'],['05:24 AM','06:13 PM'],['05:23 AM','06:14 PM'],['05:22 AM','06:15 PM'],['05:21 AM','06:16 PM'],
-    ['05:19 AM','06:17 PM'],['05:18 AM','06:18 PM'],['05:17 AM','06:19 PM'],['05:16 AM','06:20 PM'],['05:14 AM','06:21 PM'],
-    ['05:13 AM','06:22 PM'],['05:12 AM','06:23 PM'],['05:10 AM','06:24 PM'],['05:09 AM','06:25 PM'],['05:08 AM','06:26 PM'],
-    ['05:06 AM','06:27 PM'],['05:05 AM','06:28 PM'],['05:03 AM','06:29 PM'],['05:02 AM','06:30 PM'],['05:00 AM','06:31 PM'],
-    ['04:59 AM','06:32 PM'],['04:57 AM','06:33 PM'],['04:56 AM','06:34 PM'],['04:54 AM','06:35 PM'],['04:53 AM','06:36 PM']
-  ],
-  multan:[
-    ['05:22 AM','06:01 PM'],['05:21 AM','06:02 PM'],['05:20 AM','06:03 PM'],['05:19 AM','06:04 PM'],['05:18 AM','06:05 PM'],
-    ['05:17 AM','06:06 PM'],['05:16 AM','06:07 PM'],['05:15 AM','06:08 PM'],['05:14 AM','06:09 PM'],['05:12 AM','06:10 PM'],
-    ['05:11 AM','06:11 PM'],['05:10 AM','06:12 PM'],['05:09 AM','06:13 PM'],['05:07 AM','06:14 PM'],['05:06 AM','06:15 PM'],
-    ['05:05 AM','06:16 PM'],['05:03 AM','06:17 PM'],['05:02 AM','06:18 PM'],['05:00 AM','06:19 PM'],['04:59 AM','06:20 PM'],
-    ['04:58 AM','06:21 PM'],['04:56 AM','06:22 PM'],['04:55 AM','06:23 PM'],['04:53 AM','06:24 PM'],['04:52 AM','06:25 PM'],
-    ['04:50 AM','06:26 PM'],['04:48 AM','06:27 PM'],['04:47 AM','06:28 PM'],['04:45 AM','06:29 PM'],['04:44 AM','06:29 PM']
-  ],
-  dubai:[
-    ['05:42 AM','06:06 PM'],['05:41 AM','06:07 PM'],['05:40 AM','06:08 PM'],['05:39 AM','06:09 PM'],['05:38 AM','06:10 PM'],
-    ['05:37 AM','06:11 PM'],['05:36 AM','06:12 PM'],['05:35 AM','06:12 PM'],['05:34 AM','06:13 PM'],['05:33 AM','06:14 PM'],
-    ['05:32 AM','06:15 PM'],['05:31 AM','06:16 PM'],['05:30 AM','06:17 PM'],['05:29 AM','06:17 PM'],['05:28 AM','06:18 PM'],
-    ['05:27 AM','06:19 PM'],['05:26 AM','06:20 PM'],['05:24 AM','06:21 PM'],['05:23 AM','06:21 PM'],['05:22 AM','06:22 PM'],
-    ['05:21 AM','06:23 PM'],['05:20 AM','06:24 PM'],['05:18 AM','06:24 PM'],['05:17 AM','06:25 PM'],['05:16 AM','06:26 PM'],
-    ['05:15 AM','06:27 PM'],['05:13 AM','06:27 PM'],['05:12 AM','06:28 PM'],['05:11 AM','06:29 PM'],['05:09 AM','06:30 PM']
-  ],
-  abudhabi:[
-    ['05:43 AM','06:07 PM'],['05:42 AM','06:08 PM'],['05:41 AM','06:09 PM'],['05:40 AM','06:10 PM'],['05:39 AM','06:11 PM'],
-    ['05:38 AM','06:11 PM'],['05:37 AM','06:12 PM'],['05:36 AM','06:13 PM'],['05:35 AM','06:14 PM'],['05:34 AM','06:15 PM'],
-    ['05:32 AM','06:15 PM'],['05:31 AM','06:16 PM'],['05:30 AM','06:17 PM'],['05:29 AM','06:18 PM'],['05:28 AM','06:19 PM'],
-    ['05:27 AM','06:19 PM'],['05:26 AM','06:20 PM'],['05:24 AM','06:21 PM'],['05:23 AM','06:22 PM'],['05:22 AM','06:22 PM'],
-    ['05:21 AM','06:23 PM'],['05:19 AM','06:24 PM'],['05:18 AM','06:25 PM'],['05:17 AM','06:25 PM'],['05:15 AM','06:26 PM'],
-    ['05:14 AM','06:27 PM'],['05:13 AM','06:28 PM'],['05:11 AM','06:28 PM'],['05:10 AM','06:29 PM'],['05:09 AM','06:30 PM']
-  ],
-  riyadh:[
-    ['05:41 AM','06:13 PM'],['05:40 AM','06:14 PM'],['05:39 AM','06:15 PM'],['05:38 AM','06:16 PM'],['05:37 AM','06:16 PM'],
-    ['05:36 AM','06:17 PM'],['05:35 AM','06:18 PM'],['05:34 AM','06:19 PM'],['05:33 AM','06:19 PM'],['05:32 AM','06:20 PM'],
-    ['05:31 AM','06:21 PM'],['05:29 AM','06:22 PM'],['05:28 AM','06:22 PM'],['05:27 AM','06:23 PM'],['05:26 AM','06:24 PM'],
-    ['05:25 AM','06:25 PM'],['05:24 AM','06:25 PM'],['05:22 AM','06:26 PM'],['05:21 AM','06:27 PM'],['05:20 AM','06:28 PM'],
-    ['05:19 AM','06:28 PM'],['05:17 AM','06:29 PM'],['05:16 AM','06:30 PM'],['05:15 AM','06:30 PM'],['05:13 AM','06:31 PM'],
-    ['05:12 AM','06:32 PM'],['05:11 AM','06:33 PM'],['05:09 AM','06:33 PM'],['05:08 AM','06:34 PM'],['05:07 AM','06:35 PM']
-  ],
-  mecca:[
-    ['05:41 AM','06:13 PM'],['05:40 AM','06:14 PM'],['05:39 AM','06:15 PM'],['05:38 AM','06:15 PM'],['05:37 AM','06:16 PM'],
-    ['05:36 AM','06:17 PM'],['05:35 AM','06:18 PM'],['05:34 AM','06:18 PM'],['05:33 AM','06:19 PM'],['05:31 AM','06:20 PM'],
-    ['05:30 AM','06:21 PM'],['05:29 AM','06:21 PM'],['05:28 AM','06:22 PM'],['05:27 AM','06:23 PM'],['05:25 AM','06:24 PM'],
-    ['05:24 AM','06:24 PM'],['05:23 AM','06:25 PM'],['05:22 AM','06:26 PM'],['05:20 AM','06:27 PM'],['05:19 AM','06:27 PM'],
-    ['05:18 AM','06:28 PM'],['05:16 AM','06:29 PM'],['05:15 AM','06:29 PM'],['05:14 AM','06:30 PM'],['05:12 AM','06:31 PM'],
-    ['05:11 AM','06:32 PM'],['05:10 AM','06:32 PM'],['05:08 AM','06:33 PM'],['05:07 AM','06:34 PM'],['05:05 AM','06:34 PM']
-  ],
-  istanbul:[
-    ['06:37 AM','06:26 PM'],['06:35 AM','06:27 PM'],['06:33 AM','06:29 PM'],['06:31 AM','06:30 PM'],['06:29 AM','06:31 PM'],
-    ['06:27 AM','06:33 PM'],['06:25 AM','06:34 PM'],['06:24 AM','06:35 PM'],['06:22 AM','06:37 PM'],['06:20 AM','06:38 PM'],
-    ['06:18 AM','06:39 PM'],['06:16 AM','06:41 PM'],['06:14 AM','06:42 PM'],['06:12 AM','06:43 PM'],['06:10 AM','06:45 PM'],
-    ['06:08 AM','06:46 PM'],['06:06 AM','06:47 PM'],['06:04 AM','06:49 PM'],['06:02 AM','06:50 PM'],['06:00 AM','06:51 PM'],
-    ['05:58 AM','06:52 PM'],['05:56 AM','06:54 PM'],['05:54 AM','06:55 PM'],['05:52 AM','06:56 PM'],['05:50 AM','06:58 PM'],
-    ['05:48 AM','06:59 PM'],['05:46 AM','07:00 PM'],['05:43 AM','07:02 PM'],['05:41 AM','07:03 PM'],['05:39 AM','07:04 PM']
-  ],
-  cairo:[
-    ['04:49 AM','05:48 PM'],['04:48 AM','05:49 PM'],['04:47 AM','05:50 PM'],['04:46 AM','05:51 PM'],['04:45 AM','05:52 PM'],
-    ['04:44 AM','05:53 PM'],['04:43 AM','05:53 PM'],['04:42 AM','05:54 PM'],['04:40 AM','05:55 PM'],['04:39 AM','05:56 PM'],
-    ['04:38 AM','05:57 PM'],['04:37 AM','05:58 PM'],['04:36 AM','05:58 PM'],['04:35 AM','05:59 PM'],['04:33 AM','06:00 PM'],
-    ['04:32 AM','06:01 PM'],['04:31 AM','06:02 PM'],['04:30 AM','06:02 PM'],['04:28 AM','06:03 PM'],['04:27 AM','06:04 PM'],
-    ['04:26 AM','06:05 PM'],['04:25 AM','06:05 PM'],['04:23 AM','06:06 PM'],['04:22 AM','06:07 PM'],['04:21 AM','06:08 PM'],
-    ['04:19 AM','06:08 PM'],['04:18 AM','06:09 PM'],['04:17 AM','06:10 PM'],['04:15 AM','06:11 PM'],['04:14 AM','06:11 PM']
-  ],
-  newyork:[
-    ['05:29 AM','05:19 PM'],['05:28 AM','05:21 PM'],['05:26 AM','05:22 PM'],['05:24 AM','05:23 PM'],['05:23 AM','05:24 PM'],
-    ['05:21 AM','05:25 PM'],['05:19 AM','05:26 PM'],['05:17 AM','05:28 PM'],['05:15 AM','05:29 PM'],['05:14 AM','05:30 PM'],
-    ['05:12 AM','05:31 PM'],['05:10 AM','05:32 PM'],['05:08 AM','05:33 PM'],['05:06 AM','05:35 PM'],['05:04 AM','05:36 PM'],
-    ['05:02 AM','05:37 PM'],['05:00 AM','05:38 PM'],['04:58 AM','05:39 PM'],['04:56 AM','05:40 PM'],['04:54 AM','05:42 PM'],
-    ['04:52 AM','05:43 PM'],['04:50 AM','05:44 PM'],['04:48 AM','05:45 PM'],['04:46 AM','05:46 PM'],['04:44 AM','05:48 PM'],
-    ['04:42 AM','05:49 PM'],['04:40 AM','05:50 PM'],['04:37 AM','05:51 PM'],['04:35 AM','05:52 PM'],['04:33 AM','05:54 PM']
-  ],
-  losangeles:[
-    ['05:44 AM','05:47 PM'],['05:42 AM','05:48 PM'],['05:41 AM','05:49 PM'],['05:39 AM','05:50 PM'],['05:38 AM','05:52 PM'],
-    ['05:36 AM','05:53 PM'],['05:34 AM','05:54 PM'],['05:33 AM','05:55 PM'],['05:31 AM','05:56 PM'],['05:29 AM','05:57 PM'],
-    ['05:28 AM','05:59 PM'],['05:26 AM','06:00 PM'],['05:24 AM','06:01 PM'],['05:23 AM','06:02 PM'],['05:21 AM','06:03 PM'],
-    ['05:19 AM','06:04 PM'],['05:17 AM','06:06 PM'],['05:16 AM','06:07 PM'],['05:14 AM','06:08 PM'],['05:12 AM','06:09 PM'],
-    ['05:10 AM','06:10 PM'],['05:09 AM','06:11 PM'],['05:07 AM','06:13 PM'],['05:05 AM','06:14 PM'],['05:03 AM','06:15 PM'],
-    ['05:01 AM','06:16 PM'],['04:59 AM','06:17 PM'],['04:58 AM','06:18 PM'],['04:56 AM','06:20 PM'],['04:54 AM','06:21 PM']
-  ],
-  london:[
-    ['05:38 AM','04:57 PM'],['05:36 AM','04:59 PM'],['05:33 AM','05:01 PM'],['05:31 AM','05:03 PM'],['05:28 AM','05:05 PM'],
-    ['05:26 AM','05:07 PM'],['05:23 AM','05:09 PM'],['05:21 AM','05:11 PM'],['05:18 AM','05:13 PM'],['05:16 AM','05:15 PM'],
-    ['05:13 AM','05:17 PM'],['05:11 AM','05:19 PM'],['05:08 AM','05:21 PM'],['05:05 AM','05:23 PM'],['05:03 AM','05:25 PM'],
-    ['05:00 AM','05:27 PM'],['04:57 AM','05:29 PM'],['04:55 AM','05:31 PM'],['04:52 AM','05:33 PM'],['04:49 AM','05:35 PM'],
-    ['04:47 AM','05:37 PM'],['04:44 AM','05:39 PM'],['04:41 AM','05:41 PM'],['04:38 AM','05:43 PM'],['04:35 AM','05:45 PM'],
-    ['04:33 AM','05:47 PM'],['04:30 AM','05:49 PM'],['04:27 AM','05:51 PM'],['04:24 AM','05:53 PM'],['04:21 AM','05:55 PM']
-  ],
-  toronto:[
-    ['05:32 AM','05:25 PM'],['05:30 AM','05:27 PM'],['05:28 AM','05:28 PM'],['05:26 AM','05:30 PM'],['05:24 AM','05:31 PM'],
-    ['05:22 AM','05:33 PM'],['05:20 AM','05:34 PM'],['05:18 AM','05:36 PM'],['05:16 AM','05:37 PM'],['05:14 AM','05:38 PM'],
-    ['05:12 AM','05:40 PM'],['05:10 AM','05:41 PM'],['05:08 AM','05:43 PM'],['05:06 AM','05:44 PM'],['05:04 AM','05:46 PM'],
-    ['05:01 AM','05:47 PM'],['04:59 AM','05:49 PM'],['04:57 AM','05:50 PM'],['04:55 AM','05:51 PM'],['04:52 AM','05:53 PM'],
-    ['04:50 AM','05:54 PM'],['04:48 AM','05:56 PM'],['04:46 AM','05:57 PM'],['04:43 AM','05:58 PM'],['04:41 AM','06:00 PM'],
-    ['04:38 AM','06:01 PM'],['04:36 AM','06:03 PM'],['04:34 AM','06:04 PM'],['04:31 AM','06:05 PM'],['04:29 AM','06:07 PM']
-  ],
-  kualalumpur:[
-    ['06:01 AM','07:24 PM'],['06:01 AM','07:24 PM'],['06:00 AM','07:24 PM'],['06:00 AM','07:25 PM'],['05:59 AM','07:25 PM'],
-    ['05:59 AM','07:25 PM'],['05:59 AM','07:25 PM'],['05:58 AM','07:25 PM'],['05:58 AM','07:26 PM'],['05:58 AM','07:26 PM'],
-    ['05:57 AM','07:26 PM'],['05:57 AM','07:26 PM'],['05:57 AM','07:27 PM'],['05:56 AM','07:27 PM'],['05:56 AM','07:27 PM'],
-    ['05:56 AM','07:27 PM'],['05:55 AM','07:28 PM'],['05:55 AM','07:28 PM'],['05:55 AM','07:28 PM'],['05:54 AM','07:28 PM'],
-    ['05:54 AM','07:29 PM'],['05:54 AM','07:29 PM'],['05:53 AM','07:29 PM'],['05:53 AM','07:29 PM'],['05:53 AM','07:30 PM'],
-    ['05:52 AM','07:30 PM'],['05:52 AM','07:30 PM'],['05:52 AM','07:30 PM'],['05:51 AM','07:31 PM'],['05:51 AM','07:31 PM']
-  ],
-  jakarta:[
-    ['04:35 AM','06:03 PM'],['04:35 AM','06:03 PM'],['04:34 AM','06:03 PM'],['04:34 AM','06:03 PM'],['04:34 AM','06:03 PM'],
-    ['04:33 AM','06:03 PM'],['04:33 AM','06:03 PM'],['04:33 AM','06:04 PM'],['04:32 AM','06:04 PM'],['04:32 AM','06:04 PM'],
-    ['04:32 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:30 AM','06:05 PM'],
-    ['04:30 AM','06:05 PM'],['04:30 AM','06:05 PM'],['04:29 AM','06:05 PM'],['04:29 AM','06:05 PM'],['04:29 AM','06:05 PM'],
-    ['04:28 AM','06:05 PM'],['04:28 AM','06:06 PM'],['04:28 AM','06:06 PM'],['04:27 AM','06:06 PM'],['04:27 AM','06:06 PM'],
-    ['04:27 AM','06:06 PM'],['04:26 AM','06:06 PM'],['04:26 AM','06:06 PM'],['04:26 AM','06:07 PM'],['04:25 AM','06:07 PM']
-  ]
+  rawalpindi:[['05:24 AM','05:57 PM'],['05:23 AM','05:58 PM'],['05:22 AM','05:59 PM'],['05:21 AM','06:00 PM'],['05:20 AM','06:01 PM'],['05:19 AM','06:02 PM'],['05:18 AM','06:03 PM'],['05:17 AM','06:04 PM'],['05:16 AM','06:05 PM'],['05:14 AM','06:06 PM'],['05:13 AM','06:07 PM'],['05:12 AM','06:08 PM'],['05:11 AM','06:09 PM'],['05:09 AM','06:10 PM'],['05:08 AM','06:11 PM'],['05:07 AM','06:12 PM'],['05:05 AM','06:13 PM'],['05:04 AM','06:14 PM'],['05:03 AM','06:15 PM'],['05:01 AM','06:16 PM'],['05:00 AM','06:17 PM'],['04:58 AM','06:18 PM'],['04:57 AM','06:19 PM'],['04:55 AM','06:20 PM'],['04:54 AM','06:21 PM'],['04:52 AM','06:22 PM'],['04:51 AM','06:23 PM'],['04:49 AM','06:24 PM'],['04:48 AM','06:25 PM'],['04:46 AM','06:26 PM']],
+  karachi:[['05:46 AM','06:29 PM'],['05:45 AM','06:30 PM'],['05:44 AM','06:31 PM'],['05:43 AM','06:32 PM'],['05:42 AM','06:33 PM'],['05:41 AM','06:34 PM'],['05:40 AM','06:34 PM'],['05:39 AM','06:35 PM'],['05:38 AM','06:36 PM'],['05:37 AM','06:37 PM'],['05:36 AM','06:38 PM'],['05:35 AM','06:38 PM'],['05:34 AM','06:39 PM'],['05:33 AM','06:40 PM'],['05:32 AM','06:41 PM'],['05:31 AM','06:42 PM'],['05:30 AM','06:42 PM'],['05:29 AM','06:43 PM'],['05:28 AM','06:44 PM'],['05:27 AM','06:45 PM'],['05:26 AM','06:45 PM'],['05:25 AM','06:46 PM'],['05:24 AM','06:47 PM'],['05:23 AM','06:48 PM'],['05:21 AM','06:48 PM'],['05:20 AM','06:49 PM'],['05:19 AM','06:50 PM'],['05:18 AM','06:51 PM'],['05:17 AM','06:51 PM'],['05:16 AM','06:52 PM']],
+  lahore:[['05:18 AM','05:54 PM'],['05:17 AM','05:55 PM'],['05:16 AM','05:56 PM'],['05:15 AM','05:57 PM'],['05:14 AM','05:58 PM'],['05:13 AM','05:59 PM'],['05:12 AM','06:00 PM'],['05:11 AM','06:01 PM'],['05:10 AM','06:02 PM'],['05:08 AM','06:03 PM'],['05:07 AM','06:04 PM'],['05:06 AM','06:05 PM'],['05:05 AM','06:06 PM'],['05:03 AM','06:07 PM'],['05:02 AM','06:08 PM'],['05:01 AM','06:09 PM'],['04:59 AM','06:10 PM'],['04:58 AM','06:11 PM'],['04:57 AM','06:12 PM'],['04:55 AM','06:13 PM'],['04:54 AM','06:14 PM'],['04:52 AM','06:15 PM'],['04:51 AM','06:16 PM'],['04:49 AM','06:17 PM'],['04:48 AM','06:18 PM'],['04:46 AM','06:19 PM'],['04:44 AM','06:20 PM'],['04:43 AM','06:21 PM'],['04:41 AM','06:22 PM'],['04:40 AM','06:22 PM']],
+  peshawar:[['05:09 AM','05:47 PM'],['05:08 AM','05:48 PM'],['05:07 AM','05:49 PM'],['05:06 AM','05:50 PM'],['05:05 AM','05:51 PM'],['05:04 AM','05:52 PM'],['05:03 AM','05:53 PM'],['05:02 AM','05:54 PM'],['05:00 AM','05:55 PM'],['04:59 AM','05:56 PM'],['04:58 AM','05:57 PM'],['04:56 AM','05:58 PM'],['04:55 AM','05:59 PM'],['04:54 AM','06:00 PM'],['04:52 AM','06:01 PM'],['04:51 AM','06:02 PM'],['04:49 AM','06:03 PM'],['04:48 AM','06:04 PM'],['04:46 AM','06:05 PM'],['04:45 AM','06:06 PM'],['04:43 AM','06:07 PM'],['04:42 AM','06:08 PM'],['04:40 AM','06:09 PM'],['04:38 AM','06:10 PM'],['04:37 AM','06:11 PM'],['04:35 AM','06:12 PM'],['04:34 AM','06:13 PM'],['04:32 AM','06:14 PM'],['04:30 AM','06:15 PM'],['04:29 AM','06:16 PM']],
+  quetta:[['05:30 AM','06:07 PM'],['05:29 AM','06:08 PM'],['05:28 AM','06:09 PM'],['05:27 AM','06:10 PM'],['05:26 AM','06:11 PM'],['05:25 AM','06:12 PM'],['05:24 AM','06:13 PM'],['05:23 AM','06:14 PM'],['05:22 AM','06:15 PM'],['05:21 AM','06:16 PM'],['05:19 AM','06:17 PM'],['05:18 AM','06:18 PM'],['05:17 AM','06:19 PM'],['05:16 AM','06:20 PM'],['05:14 AM','06:21 PM'],['05:13 AM','06:22 PM'],['05:12 AM','06:23 PM'],['05:10 AM','06:24 PM'],['05:09 AM','06:25 PM'],['05:08 AM','06:26 PM'],['05:06 AM','06:27 PM'],['05:05 AM','06:28 PM'],['05:03 AM','06:29 PM'],['05:02 AM','06:30 PM'],['05:00 AM','06:31 PM'],['04:59 AM','06:32 PM'],['04:57 AM','06:33 PM'],['04:56 AM','06:34 PM'],['04:54 AM','06:35 PM'],['04:53 AM','06:36 PM']],
+  multan:[['05:22 AM','06:01 PM'],['05:21 AM','06:02 PM'],['05:20 AM','06:03 PM'],['05:19 AM','06:04 PM'],['05:18 AM','06:05 PM'],['05:17 AM','06:06 PM'],['05:16 AM','06:07 PM'],['05:15 AM','06:08 PM'],['05:14 AM','06:09 PM'],['05:12 AM','06:10 PM'],['05:11 AM','06:11 PM'],['05:10 AM','06:12 PM'],['05:09 AM','06:13 PM'],['05:07 AM','06:14 PM'],['05:06 AM','06:15 PM'],['05:05 AM','06:16 PM'],['05:03 AM','06:17 PM'],['05:02 AM','06:18 PM'],['05:00 AM','06:19 PM'],['04:59 AM','06:20 PM'],['04:58 AM','06:21 PM'],['04:56 AM','06:22 PM'],['04:55 AM','06:23 PM'],['04:53 AM','06:24 PM'],['04:52 AM','06:25 PM'],['04:50 AM','06:26 PM'],['04:48 AM','06:27 PM'],['04:47 AM','06:28 PM'],['04:45 AM','06:29 PM'],['04:44 AM','06:29 PM']],
+  dubai:[['05:42 AM','06:06 PM'],['05:41 AM','06:07 PM'],['05:40 AM','06:08 PM'],['05:39 AM','06:09 PM'],['05:38 AM','06:10 PM'],['05:37 AM','06:11 PM'],['05:36 AM','06:12 PM'],['05:35 AM','06:12 PM'],['05:34 AM','06:13 PM'],['05:33 AM','06:14 PM'],['05:32 AM','06:15 PM'],['05:31 AM','06:16 PM'],['05:30 AM','06:17 PM'],['05:29 AM','06:17 PM'],['05:28 AM','06:18 PM'],['05:27 AM','06:19 PM'],['05:26 AM','06:20 PM'],['05:24 AM','06:21 PM'],['05:23 AM','06:21 PM'],['05:22 AM','06:22 PM'],['05:21 AM','06:23 PM'],['05:20 AM','06:24 PM'],['05:18 AM','06:24 PM'],['05:17 AM','06:25 PM'],['05:16 AM','06:26 PM'],['05:15 AM','06:27 PM'],['05:13 AM','06:27 PM'],['05:12 AM','06:28 PM'],['05:11 AM','06:29 PM'],['05:09 AM','06:30 PM']],
+  abudhabi:[['05:43 AM','06:07 PM'],['05:42 AM','06:08 PM'],['05:41 AM','06:09 PM'],['05:40 AM','06:10 PM'],['05:39 AM','06:11 PM'],['05:38 AM','06:11 PM'],['05:37 AM','06:12 PM'],['05:36 AM','06:13 PM'],['05:35 AM','06:14 PM'],['05:34 AM','06:15 PM'],['05:32 AM','06:15 PM'],['05:31 AM','06:16 PM'],['05:30 AM','06:17 PM'],['05:29 AM','06:18 PM'],['05:28 AM','06:19 PM'],['05:27 AM','06:19 PM'],['05:26 AM','06:20 PM'],['05:24 AM','06:21 PM'],['05:23 AM','06:22 PM'],['05:22 AM','06:22 PM'],['05:21 AM','06:23 PM'],['05:19 AM','06:24 PM'],['05:18 AM','06:25 PM'],['05:17 AM','06:25 PM'],['05:15 AM','06:26 PM'],['05:14 AM','06:27 PM'],['05:13 AM','06:28 PM'],['05:11 AM','06:28 PM'],['05:10 AM','06:29 PM'],['05:09 AM','06:30 PM']],
+  riyadh:[['05:41 AM','06:13 PM'],['05:40 AM','06:14 PM'],['05:39 AM','06:15 PM'],['05:38 AM','06:16 PM'],['05:37 AM','06:16 PM'],['05:36 AM','06:17 PM'],['05:35 AM','06:18 PM'],['05:34 AM','06:19 PM'],['05:33 AM','06:19 PM'],['05:32 AM','06:20 PM'],['05:31 AM','06:21 PM'],['05:29 AM','06:22 PM'],['05:28 AM','06:22 PM'],['05:27 AM','06:23 PM'],['05:26 AM','06:24 PM'],['05:25 AM','06:25 PM'],['05:24 AM','06:25 PM'],['05:22 AM','06:26 PM'],['05:21 AM','06:27 PM'],['05:20 AM','06:28 PM'],['05:19 AM','06:28 PM'],['05:17 AM','06:29 PM'],['05:16 AM','06:30 PM'],['05:15 AM','06:30 PM'],['05:13 AM','06:31 PM'],['05:12 AM','06:32 PM'],['05:11 AM','06:33 PM'],['05:09 AM','06:33 PM'],['05:08 AM','06:34 PM'],['05:07 AM','06:35 PM']],
+  mecca:[['05:41 AM','06:13 PM'],['05:40 AM','06:14 PM'],['05:39 AM','06:15 PM'],['05:38 AM','06:15 PM'],['05:37 AM','06:16 PM'],['05:36 AM','06:17 PM'],['05:35 AM','06:18 PM'],['05:34 AM','06:18 PM'],['05:33 AM','06:19 PM'],['05:31 AM','06:20 PM'],['05:30 AM','06:21 PM'],['05:29 AM','06:21 PM'],['05:28 AM','06:22 PM'],['05:27 AM','06:23 PM'],['05:25 AM','06:24 PM'],['05:24 AM','06:24 PM'],['05:23 AM','06:25 PM'],['05:22 AM','06:26 PM'],['05:20 AM','06:27 PM'],['05:19 AM','06:27 PM'],['05:18 AM','06:28 PM'],['05:16 AM','06:29 PM'],['05:15 AM','06:29 PM'],['05:14 AM','06:30 PM'],['05:12 AM','06:31 PM'],['05:11 AM','06:32 PM'],['05:10 AM','06:32 PM'],['05:08 AM','06:33 PM'],['05:07 AM','06:34 PM'],['05:05 AM','06:34 PM']],
+  istanbul:[['06:37 AM','06:26 PM'],['06:35 AM','06:27 PM'],['06:33 AM','06:29 PM'],['06:31 AM','06:30 PM'],['06:29 AM','06:31 PM'],['06:27 AM','06:33 PM'],['06:25 AM','06:34 PM'],['06:24 AM','06:35 PM'],['06:22 AM','06:37 PM'],['06:20 AM','06:38 PM'],['06:18 AM','06:39 PM'],['06:16 AM','06:41 PM'],['06:14 AM','06:42 PM'],['06:12 AM','06:43 PM'],['06:10 AM','06:45 PM'],['06:08 AM','06:46 PM'],['06:06 AM','06:47 PM'],['06:04 AM','06:49 PM'],['06:02 AM','06:50 PM'],['06:00 AM','06:51 PM'],['05:58 AM','06:52 PM'],['05:56 AM','06:54 PM'],['05:54 AM','06:55 PM'],['05:52 AM','06:56 PM'],['05:50 AM','06:58 PM'],['05:48 AM','06:59 PM'],['05:46 AM','07:00 PM'],['05:43 AM','07:02 PM'],['05:41 AM','07:03 PM'],['05:39 AM','07:04 PM']],
+  cairo:[['04:49 AM','05:48 PM'],['04:48 AM','05:49 PM'],['04:47 AM','05:50 PM'],['04:46 AM','05:51 PM'],['04:45 AM','05:52 PM'],['04:44 AM','05:53 PM'],['04:43 AM','05:53 PM'],['04:42 AM','05:54 PM'],['04:40 AM','05:55 PM'],['04:39 AM','05:56 PM'],['04:38 AM','05:57 PM'],['04:37 AM','05:58 PM'],['04:36 AM','05:58 PM'],['04:35 AM','05:59 PM'],['04:33 AM','06:00 PM'],['04:32 AM','06:01 PM'],['04:31 AM','06:02 PM'],['04:30 AM','06:02 PM'],['04:28 AM','06:03 PM'],['04:27 AM','06:04 PM'],['04:26 AM','06:05 PM'],['04:25 AM','06:05 PM'],['04:23 AM','06:06 PM'],['04:22 AM','06:07 PM'],['04:21 AM','06:08 PM'],['04:19 AM','06:08 PM'],['04:18 AM','06:09 PM'],['04:17 AM','06:10 PM'],['04:15 AM','06:11 PM'],['04:14 AM','06:11 PM']],
+  newyork:[['05:29 AM','05:19 PM'],['05:28 AM','05:21 PM'],['05:26 AM','05:22 PM'],['05:24 AM','05:23 PM'],['05:23 AM','05:24 PM'],['05:21 AM','05:25 PM'],['05:19 AM','05:26 PM'],['05:17 AM','05:28 PM'],['05:15 AM','05:29 PM'],['05:14 AM','05:30 PM'],['05:12 AM','05:31 PM'],['05:10 AM','05:32 PM'],['05:08 AM','05:33 PM'],['05:06 AM','05:35 PM'],['05:04 AM','05:36 PM'],['05:02 AM','05:37 PM'],['05:00 AM','05:38 PM'],['04:58 AM','05:39 PM'],['04:56 AM','05:40 PM'],['04:54 AM','05:42 PM'],['04:52 AM','05:43 PM'],['04:50 AM','05:44 PM'],['04:48 AM','05:45 PM'],['04:46 AM','05:46 PM'],['04:44 AM','05:48 PM'],['04:42 AM','05:49 PM'],['04:40 AM','05:50 PM'],['04:37 AM','05:51 PM'],['04:35 AM','05:52 PM'],['04:33 AM','05:54 PM']],
+  losangeles:[['05:44 AM','05:47 PM'],['05:42 AM','05:48 PM'],['05:41 AM','05:49 PM'],['05:39 AM','05:50 PM'],['05:38 AM','05:52 PM'],['05:36 AM','05:53 PM'],['05:34 AM','05:54 PM'],['05:33 AM','05:55 PM'],['05:31 AM','05:56 PM'],['05:29 AM','05:57 PM'],['05:28 AM','05:59 PM'],['05:26 AM','06:00 PM'],['05:24 AM','06:01 PM'],['05:23 AM','06:02 PM'],['05:21 AM','06:03 PM'],['05:19 AM','06:04 PM'],['05:17 AM','06:06 PM'],['05:16 AM','06:07 PM'],['05:14 AM','06:08 PM'],['05:12 AM','06:09 PM'],['05:10 AM','06:10 PM'],['05:09 AM','06:11 PM'],['05:07 AM','06:13 PM'],['05:05 AM','06:14 PM'],['05:03 AM','06:15 PM'],['05:01 AM','06:16 PM'],['04:59 AM','06:17 PM'],['04:58 AM','06:18 PM'],['04:56 AM','06:20 PM'],['04:54 AM','06:21 PM']],
+  london:[['05:38 AM','04:57 PM'],['05:36 AM','04:59 PM'],['05:33 AM','05:01 PM'],['05:31 AM','05:03 PM'],['05:28 AM','05:05 PM'],['05:26 AM','05:07 PM'],['05:23 AM','05:09 PM'],['05:21 AM','05:11 PM'],['05:18 AM','05:13 PM'],['05:16 AM','05:15 PM'],['05:13 AM','05:17 PM'],['05:11 AM','05:19 PM'],['05:08 AM','05:21 PM'],['05:05 AM','05:23 PM'],['05:03 AM','05:25 PM'],['05:00 AM','05:27 PM'],['04:57 AM','05:29 PM'],['04:55 AM','05:31 PM'],['04:52 AM','05:33 PM'],['04:49 AM','05:35 PM'],['04:47 AM','05:37 PM'],['04:44 AM','05:39 PM'],['04:41 AM','05:41 PM'],['04:38 AM','05:43 PM'],['04:35 AM','05:45 PM'],['04:33 AM','05:47 PM'],['04:30 AM','05:49 PM'],['04:27 AM','05:51 PM'],['04:24 AM','05:53 PM'],['04:21 AM','05:55 PM']],
+  toronto:[['05:32 AM','05:25 PM'],['05:30 AM','05:27 PM'],['05:28 AM','05:28 PM'],['05:26 AM','05:30 PM'],['05:24 AM','05:31 PM'],['05:22 AM','05:33 PM'],['05:20 AM','05:34 PM'],['05:18 AM','05:36 PM'],['05:16 AM','05:37 PM'],['05:14 AM','05:38 PM'],['05:12 AM','05:40 PM'],['05:10 AM','05:41 PM'],['05:08 AM','05:43 PM'],['05:06 AM','05:44 PM'],['05:04 AM','05:46 PM'],['05:01 AM','05:47 PM'],['04:59 AM','05:49 PM'],['04:57 AM','05:50 PM'],['04:55 AM','05:51 PM'],['04:52 AM','05:53 PM'],['04:50 AM','05:54 PM'],['04:48 AM','05:56 PM'],['04:46 AM','05:57 PM'],['04:43 AM','05:58 PM'],['04:41 AM','06:00 PM'],['04:38 AM','06:01 PM'],['04:36 AM','06:03 PM'],['04:34 AM','06:04 PM'],['04:31 AM','06:05 PM'],['04:29 AM','06:07 PM']],
+  kualalumpur:[['06:01 AM','07:24 PM'],['06:01 AM','07:24 PM'],['06:00 AM','07:24 PM'],['06:00 AM','07:25 PM'],['05:59 AM','07:25 PM'],['05:59 AM','07:25 PM'],['05:59 AM','07:25 PM'],['05:58 AM','07:25 PM'],['05:58 AM','07:26 PM'],['05:58 AM','07:26 PM'],['05:57 AM','07:26 PM'],['05:57 AM','07:26 PM'],['05:57 AM','07:27 PM'],['05:56 AM','07:27 PM'],['05:56 AM','07:27 PM'],['05:56 AM','07:27 PM'],['05:55 AM','07:28 PM'],['05:55 AM','07:28 PM'],['05:55 AM','07:28 PM'],['05:54 AM','07:28 PM'],['05:54 AM','07:29 PM'],['05:54 AM','07:29 PM'],['05:53 AM','07:29 PM'],['05:53 AM','07:29 PM'],['05:53 AM','07:30 PM'],['05:52 AM','07:30 PM'],['05:52 AM','07:30 PM'],['05:52 AM','07:30 PM'],['05:51 AM','07:31 PM'],['05:51 AM','07:31 PM']],
+  jakarta:[['04:35 AM','06:03 PM'],['04:35 AM','06:03 PM'],['04:34 AM','06:03 PM'],['04:34 AM','06:03 PM'],['04:34 AM','06:03 PM'],['04:33 AM','06:03 PM'],['04:33 AM','06:03 PM'],['04:33 AM','06:04 PM'],['04:32 AM','06:04 PM'],['04:32 AM','06:04 PM'],['04:32 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:31 AM','06:04 PM'],['04:30 AM','06:05 PM'],['04:30 AM','06:05 PM'],['04:30 AM','06:05 PM'],['04:29 AM','06:05 PM'],['04:29 AM','06:05 PM'],['04:29 AM','06:05 PM'],['04:28 AM','06:05 PM'],['04:28 AM','06:06 PM'],['04:28 AM','06:06 PM'],['04:27 AM','06:06 PM'],['04:27 AM','06:06 PM'],['04:27 AM','06:06 PM'],['04:26 AM','06:06 PM'],['04:26 AM','06:06 PM'],['04:26 AM','06:07 PM'],['04:25 AM','06:07 PM']]
 };
 
 const WORLD_CLOCKS=[
@@ -679,10 +551,6 @@ const WORLD_CLOCKS=[
   {label:'🇲🇾 KL',tz:'Asia/Kuala_Lumpur'},{label:'🇮🇩 Jakarta',tz:'Asia/Jakarta'}
 ];
 
-// Ramadan 1447: Day 1 = 19 Feb 2026, Day 29/30 = 19/20 Mar 2026
-// Laylatul Qadr: odd nights. The "night" of Nth Ramadan STARTS at Maghrib on the Nth day.
-// So the night of 21st Ramadan = evening of Mar 11 (Day 21)
-// Mar 11=21, Mar 13=23, Mar 15=25, Mar 17=27, Mar 19=29
 const RAMADAN_START=new Date('2026-02-19');
 const LAYLATUL_DATES=['2026-03-11','2026-03-13','2026-03-15','2026-03-17','2026-03-19'];
 const HIJRI_MONTHS=['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Awwal','Jumada al-Thani',"Rajab","Sha'ban",'Ramadan','Shawwal','Dhu al-Qi\'dah','Dhu al-Hijjah'];
@@ -703,7 +571,6 @@ function getHijri(d){
   return {d:h.day,m:HIJRI_MONTHS[h.month-1],y:h.year};
 }
 
-// CALENDAR
 let calYear=2026,calMonth=1;
 function buildCalendar(){
   const hd=document.getElementById('calHeaders'),g=document.getElementById('calGrid');
@@ -735,16 +602,13 @@ function buildCalendar(){
 function calPrev(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}buildCalendar();}
 function calNext(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}buildCalendar();}
 
-// PRAYER ROWS
 function renderPrayers(id,key){
   const c=document.getElementById(id);if(!c) return;
   const city=CITIES[key];if(!city) return;
   const dayIdx=getTodayRamDay();
-  // Get today's sehri & iftar from SCHEDULE
   let todaySehri=null,todayIftar=null;
   if(dayIdx!==null&&SCHEDULE[key]&&SCHEDULE[key][dayIdx]){
-    // strip AM/PM for 24h comparison
-    const to24=t=>{ const[time,ap]=t.split(' '); let[h,m]=time.split(':').map(Number); if(ap==='PM'&&h!==12)h+=12; if(ap==='AM'&&h===12)h=0; return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'); };
+    const to24=t=>{const[time,ap]=t.split(' ');let[h,m]=time.split(':').map(Number);if(ap==='PM'&&h!==12)h+=12;if(ap==='AM'&&h===12)h=0;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');};
     todaySehri=to24(SCHEDULE[key][dayIdx][0]);
     todayIftar=to24(SCHEDULE[key][dayIdx][1]);
   }
@@ -754,7 +618,6 @@ function renderPrayers(id,key){
   const nowM=nh*60+nm;
   c.innerHTML='';
   city.prayers.forEach(p=>{
-    // For sehri/iftar rows, use today's dynamic time from SCHEDULE
     let displayTime=p.t;
     if(p.type==='sehri'&&todaySehri) displayTime=todaySehri;
     if(p.type==='iftar'&&todayIftar) displayTime=todayIftar;
@@ -778,6 +641,7 @@ function getTodayRamDay(){
   const diff=Math.floor((today-s)/86400000);
   return diff>=0&&diff<30?diff:null;
 }
+
 function renderFast(id,key){
   const c=document.getElementById(id);if(!c) return;
   const ct=CITIES[key];
@@ -788,7 +652,6 @@ function renderFast(id,key){
     iftar=SCHEDULE[key][dayIdx][1];
     dayLabel=`Day ${dayIdx+1} · ${new Date(RAMADAN_START.getTime()+dayIdx*86400000).toLocaleDateString('en-GB',{day:'numeric',month:'short'})}`;
   } else {
-    // fallback to Day 1
     sehri=SCHEDULE[key]?SCHEDULE[key][0][0]:ct.sehri||'--:--';
     iftar=SCHEDULE[key]?SCHEDULE[key][0][1]:ct.iftar||'--:--';
     dayLabel='Today';
@@ -803,7 +666,6 @@ function renderGLink(id,key){
   c.innerHTML=`<a class="google-link" href="https://www.google.com/search?q=${encodeURIComponent(ct.googleQ)}" target="_blank">🔍 Live Prayer Times — ${ct.name} on Google</a>`;
 }
 
-// CITY SWITCHERS
 let curCity={pk:'karachi',gulf:'dubai',world:'newyork'};
 function showCity(tab,key,btn){
   const maps={pk:'pkTabs',gulf:'gulfTabs',world:'worldTabs'};
@@ -815,19 +677,16 @@ function showCity(tab,key,btn){
   else{document.getElementById('worldCityName').textContent=`${ct.flag} ${ct.name}`;document.getElementById('worldCityTZ').textContent=ct.tzLabel;renderFast('worldFastTimes',key);renderGLink('worldGoogleLink',key);renderPrayers('worldPrayers',key);}
 }
 
-// CLOCKS
 function fmt(tz){return new Date().toLocaleTimeString('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit'});}
 function fmtDate(tz){return new Date().toLocaleDateString('en-GB',{timeZone:tz,weekday:'long',day:'numeric',month:'long',year:'numeric'});}
 
 function updateClocks(){
   const mc=document.getElementById('mainClock');if(mc) mc.textContent=fmt('Asia/Karachi');
   const md=document.getElementById('mainDate');if(md) md.textContent=fmtDate('Asia/Karachi');
-  // Islamic date
   const pkNow=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Karachi'}));
   const h=getHijri(pkNow);
   const id=document.getElementById('islamicDate');
   if(id) id.textContent=h.m==='Ramadan'?`🌙 ${h.d} Ramadan 1447 AH — Day ${h.d} of Ramadan`:`${h.d} ${h.m} ${h.y} AH`;
-  // Regional
   const rwp=document.getElementById('rwpClock');if(rwp) rwp.textContent=fmt('Asia/Karachi');
   const pk=document.getElementById('pkClock');if(pk) pk.textContent=fmt('Asia/Karachi');
   const gf=document.getElementById('gulfClock');if(gf) gf.textContent=fmt(CITIES[curCity.gulf]?.tz||'Asia/Dubai');
@@ -946,41 +805,20 @@ function importData(e){
   r.readAsText(f);
 }
 function copyJSON(){
-  navigator.clipboard.writeText(JSON.stringify({v:2,tracker:tData},null,2)).then(()=>{document.getElementById('backupStatus').textContent='✅ Copied!';}).catch(()=>{document.getElementById('backupStatus').textContent='✅ Copied!';}).catch(()=>{document.getElementById('backupStatus').textContent='❌ Could not copy.';});
+  navigator.clipboard.writeText(JSON.stringify({v:2,tracker:tData},null,2)).then(()=>{document.getElementById('backupStatus').textContent='✅ Copied!';}).catch(()=>{document.getElementById('backupStatus').textContent='❌ Could not copy.';});
 }
-// SHOW/HIDE TABS
+
 function showTab(id,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
 }
-// INIT
-buildCalendar();
-renderFast('calFastTimes','rawalpindi');
-renderFast('rwpFastTimes','rawalpindi');
-renderGLink('rwpGoogleLink','rawalpindi');
-renderPrayers('rwpPrayers','rawalpindi');
-renderFast('pkFastTimes',curCity.pk);
-renderGLink('pkGoogleLink',curCity.pk);
-renderPrayers('pkPrayers',curCity.pk);
-renderFast('gulfFastTimes',curCity.gulf);
-renderGLink('gulfGoogleLink',curCity.gulf);
-renderPrayers('gulfPrayers',curCity.gulf);
-renderFast('worldFastTimes',curCity.world);
-renderGLink('worldGoogleLink',curCity.world);
-renderPrayers('worldPrayers',curCity.world);
-buildTodayRows();
-buildGrid();
-updateStats();
-updateClocks();
-setInterval(updateClocks,1000);
 
-// ===== FAST TRACKER =====
+// FAST TRACKER
 let fastData={};
 try{fastData=JSON.parse(localStorage.getItem('r1447fasts')||'{}');}catch(e){}
 
-const FAST_LABELS={kept:'✅ Kept',missed:'❌ Missed',exempt:'🟡 Exempt (travel/illness)'};
 const FAST_CYCLE={none:'kept',kept:'missed',missed:'exempt',exempt:'none'};
 
 function saveFasts(){
@@ -998,12 +836,16 @@ function setTodayFast(status){
   buildFastGrid();
 }
 
+function updateFastBtn(btn,status){
+  btn.textContent=status==='kept'?'✓':status==='missed'?'✗':status==='exempt'?'~':'○';
+  btn.className='fast-btn'+(status!=='none'?' '+status:'');
+}
+
 function cycleFast(dk,btn){
   const cur=fastData[dk]||'none';
   fastData[dk]=FAST_CYCLE[cur];
   if(fastData[dk]==='none') delete fastData[dk];
   saveFasts();
-  // update button appearance
   updateFastBtn(btn,fastData[dk]||'none');
   const statusEl=btn.closest('.fast-day')?.querySelector('.fast-status');
   if(statusEl){
@@ -1011,14 +853,8 @@ function cycleFast(dk,btn){
     statusEl.textContent=v==='kept'?'✓ Kept':v==='missed'?'✗ Missed':v==='exempt'?'~ Exempt':'';
     statusEl.className='fast-status'+(v!=='none'?' '+v:'');
   }
-  // also refresh today card if this is today
   const todayDk=getDayKey(new Date());
   if(dk===todayDk) updateTodayFastStatus();
-}
-
-function updateFastBtn(btn,status){
-  btn.textContent=status==='kept'?'✓':status==='missed'?'✗':status==='exempt'?'~':'○';
-  btn.className='fast-btn'+(status!=='none'?' '+status:'');
 }
 
 function updateTodayFastStatus(){
@@ -1030,13 +866,9 @@ function updateTodayFastStatus(){
   else if(v==='kept'){el.textContent="✅ Today's fast is marked as KEPT. MashaAllah!";el.style.color='#2ecc71';}
   else if(v==='missed'){el.textContent="❌ Today's fast marked as missed. Remember to make Qada.";el.style.color='#e74c3c';}
   else if(v==='exempt'){el.textContent="🟡 Marked as exempt (travel/illness/other). Make Qada when able.";el.style.color='#f39c12';}
-  // highlight active button
-  ['fbKept','fbMissed','fbExempt'].forEach(id=>{
-    const b=document.getElementById(id);
-    if(b) b.style.opacity='0.5';
-  });
+  ['fbKept','fbMissed','fbExempt'].forEach(id=>{const b=document.getElementById(id);if(b) b.style.opacity='0.5';});
   const activeMap={kept:'fbKept',missed:'fbMissed',exempt:'fbExempt'};
-  if(activeMap[v]){const ab=document.getElementById(activeMap[v]);if(ab) ab.style.opacity='1';ab&&(ab.style.fontWeight='900');}
+  if(activeMap[v]){const ab=document.getElementById(activeMap[v]);if(ab){ab.style.opacity='1';ab.style.fontWeight='900';}}
 }
 
 function buildFastGrid(){
@@ -1076,9 +908,7 @@ function updateFastStats(){
   for(let d=0;d<30;d++){
     const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);
     const v=fastData[getDayKey(dt)]||'none';
-    if(v==='kept') kept++;
-    else if(v==='missed') missed++;
-    else if(v==='exempt') exempt++;
+    if(v==='kept') kept++;else if(v==='missed') missed++;else if(v==='exempt') exempt++;
   }
   const logged=kept+missed+exempt;
   const remain=30-logged;
@@ -1093,7 +923,6 @@ function updateFastStats(){
 
 function buildMonthlySummary(){
   const c=document.getElementById('monthlySummary');if(!c) return;
-  // Group by week
   const weeks=[{label:'Week 1 — Days 1–7',start:0,end:6},{label:'Week 2 — Days 8–14',start:7,end:13},{label:'Week 3 — Days 15–21',start:14,end:20},{label:'Week 4 — Days 22–28',start:21,end:27},{label:'Last 2 Days — Days 29–30',start:28,end:29}];
   let html='';
   weeks.forEach(w=>{
@@ -1101,15 +930,11 @@ function buildMonthlySummary(){
     for(let d=w.start;d<=w.end;d++){
       const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);
       const v=fastData[getDayKey(dt)]||'none';
-      if(v==='kept') kept++;
-      else if(v==='missed') missed++;
-      else if(v==='exempt') exempt++;
-      else none++;
+      if(v==='kept') kept++;else if(v==='missed') missed++;else if(v==='exempt') exempt++;else none++;
     }
     const chips=(kept?`<span class="msr-chip kept">✓ ${kept} Kept</span>`:'')+(missed?`<span class="msr-chip missed">✗ ${missed} Missed</span>`:'')+( exempt?`<span class="msr-chip exempt">~ ${exempt} Exempt</span>`:'')+(none&&(kept||missed||exempt)?`<span style="font-size:9px;color:var(--text-dim);">${none} pending</span>`:'');
     html+=`<div class="month-summary-row"><div class="msr-label">${w.label}</div><div class="msr-val">${chips||'<span style="font-size:9px;color:var(--text-dim);">Not logged</span>'}</div></div>`;
   });
-  // Total row
   let totK=0,totM=0,totE=0;
   for(let d=0;d<30;d++){
     const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);
@@ -1126,8 +951,7 @@ function updateQadaNote(){
   for(let d=0;d<30;d++){
     const dt=new Date(RAMADAN_START);dt.setDate(dt.getDate()+d);
     const v=fastData[getDayKey(dt)]||'none';
-    if(v==='missed') missed++;
-    else if(v==='exempt') exempt++;
+    if(v==='missed') missed++;else if(v==='exempt') exempt++;
   }
   const qada=missed+exempt;
   if(qada===0&&missed===0&&exempt===0){el.textContent='Log your fasts above to see how many Qada fasts you need to make up.';return;}
@@ -1157,12 +981,22 @@ function copyFastJSON(){
   navigator.clipboard.writeText(JSON.stringify({v:1,fasts:fastData},null,2)).then(()=>{document.getElementById('fastBackupStatus').textContent='✅ Copied!';}).catch(()=>{document.getElementById('fastBackupStatus').textContent='❌ Could not copy.';});
 }
 
-// ===== TAB SWITCHER =====
-function showTab(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  btn.classList.add('active');
+// ===== DOWNLOAD FOR OFFLINE USE =====
+function downloadApp(){
+  var html = document.documentElement.outerHTML;
+  // Ensure proper doctype
+  var fullHtml = '<!DOCTYPE html>\n' + html;
+  var blob = new Blob([fullHtml], {type: 'text/html;charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Ramadan-1447-Maria-Kanwal.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
+  // Show toast
+  var toast = document.getElementById('dlToast');
+  if(toast){ toast.classList.add('show'); setTimeout(function(){ toast.classList.remove('show'); }, 3500); }
 }
 
 // ===== INIT =====
